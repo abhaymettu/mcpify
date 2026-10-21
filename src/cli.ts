@@ -2,6 +2,8 @@
 import { notes } from "./apps/notes.ts";
 import type { AppAdapter } from "./adapter.ts";
 import { inspectApp } from "./sdef.ts";
+import { adapterFromSdef } from "./generic.ts";
+import { basename } from "node:path";
 import { serveStdio } from "./server.ts";
 
 const adapters: Record<string, AppAdapter> = { notes };
@@ -9,6 +11,14 @@ const [cmd, target] = process.argv.slice(2);
 
 if (cmd === "serve" && target && adapters[target]) {
   await serveStdio(adapters[target]);
+} else if (cmd === "generate" && target) {
+  // Read-only server built from the app's dictionary alone.
+  const s = await inspectApp(target);
+  if (!s.scriptable) {
+    console.error(`${target}: no scripting dictionary, nothing to generate.`);
+    process.exit(1);
+  }
+  await serveStdio(adapterFromSdef(basename(target).replace(/\.app$/, ""), s));
 } else if (cmd === "inspect" && target) {
   const s = await inspectApp(target);
   if (!s.scriptable) {
@@ -26,6 +36,7 @@ if (cmd === "serve" && target && adapters[target]) {
 } else {
   console.error(`usage:
   mcpify serve <app>      run an MCP server over stdio (apps: ${Object.keys(adapters).join(", ")})
+  mcpify generate <path>  run a read-only MCP server generated from the app's dictionary
   mcpify inspect <path>   show what a Mac app exposes to scripting, e.g. /System/Applications/Notes.app`);
   process.exit(2);
 }

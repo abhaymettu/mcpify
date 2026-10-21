@@ -3,7 +3,16 @@ import { execFile } from "node:child_process";
 export interface SdefSummary {
   app: string;
   scriptable: boolean;
-  suites: { name: string; commands: string[]; classes: { name: string; properties: string[]; elements: string[] }[] }[];
+  suites: { name: string; commands: string[]; classes: SdefClass[] }[];
+}
+
+export interface SdefClass {
+  name: string;
+  plural?: string;
+  properties: string[];
+  /** Property name to declared type ("text", "date", another class name...). */
+  types: Record<string, string>;
+  elements: string[];
 }
 
 /** Read an app's scripting dictionary with `sdef` and summarise what an MCP adapter could reach. */
@@ -31,9 +40,12 @@ export function parseSdef(xml: string): SdefSummary["suites"] {
     const commands = [...inner.matchAll(/<command\b([^>]*)>/g)].map((m) => attr(m[1], "name")!).filter(Boolean);
     const classes = [...inner.matchAll(/<class(?:-extension)?\b([^>]*?)(\/>|>([\s\S]*?)<\/class(?:-extension)?>)/g)].map((m) => {
       const body = m[3] ?? "";
+      const props = [...body.matchAll(/<property\b([^>]*)>/g)].map((p) => [attr(p[1], "name"), attr(p[1], "type") ?? ""] as const).filter(([n]) => n);
       return {
         name: attr(m[1], "name") ?? `extends ${attr(m[1], "extends")}`,
-        properties: [...body.matchAll(/<property\b([^>]*)>/g)].map((p) => attr(p[1], "name")!).filter(Boolean),
+        plural: attr(m[1], "plural"),
+        properties: props.map(([n]) => n!),
+        types: Object.fromEntries(props),
         elements: [...body.matchAll(/<element\b([^>]*)>/g)].map((p) => attr(p[1], "type")!).filter(Boolean),
       };
     });
