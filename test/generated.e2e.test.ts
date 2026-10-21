@@ -1,6 +1,8 @@
 // `mcpify generate` builds a server from Notes' scripting dictionary with no Notes-specific code.
 // Its answers are checked against raw osascript reads of the real app. Read only, except the one
-// seed note this file creates (with raw osascript) and deletes again.
+// seed note this file creates (with raw osascript) and deletes again. A run cut off by a Notes
+// timeout can leave its seed behind (or an empty "New Note" if the create was interrupted), so
+// before() first removes those leftovers from the mcpify-test folder, and nothing else.
 import { after, before, describe, test } from "node:test";
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
@@ -23,7 +25,7 @@ async function call(name: string, args: Record<string, unknown> = {}) {
 }
 
 before(async () => {
-  seed = osa(`(app,a)=>{const acc=app.defaultAccount();if(!acc.folders.whose({name:"mcpify-test"}).length)acc.folders.push(app.Folder({name:"mcpify-test"}));const f=acc.folders.byName("mcpify-test");const n=app.Note({body:"<div><h1>"+a.t+"</h1></div><div>generated check</div>"});f.notes.push(n);return {id:n.id(),folderId:f.id()}}`, { t: TOKEN });
+  seed = osa(`(app,a)=>{const acc=app.defaultAccount();if(!acc.folders.whose({name:"mcpify-test"}).length)acc.folders.push(app.Folder({name:"mcpify-test"}));const f=acc.folders.byName("mcpify-test");f.notes().forEach(o=>{const nm=o.name();if(nm.startsWith("mcpifygen")||(nm==="New Note"&&o.plaintext().trim()===""))app.delete(o)});const n=app.Note({body:"<div><h1>"+a.t+"</h1></div><div>generated check</div>"});f.notes.push(n);return {id:n.id(),folderId:f.id()}}`, { t: TOKEN });
   client = new Client({ name: "mcpify-gen-e2e", version: "0.0.0" });
   await client.connect(new StdioClientTransport({ command: process.execPath, args: ["src/cli.ts", "generate", "/System/Applications/Notes.app"] }));
 });
