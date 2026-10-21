@@ -89,7 +89,7 @@ Note ids in the transcripts have the Notes store UUID replaced with `<store>`.
 
 ## Test evidence
 
-Final runs, 2026-10-21 01:20 to 01:23 local time, macOS 26 (Darwin 25.5.0), Node 26.10.0, MCP SDK 1.32.1, a Notes library of about 350 notes in three accounts:
+Final runs, 2026-10-21 01:20 to 01:23 local time, macOS 26.5.2, Node 26.10.0, MCP SDK 1.32.1, a Notes library of about 350 notes in three accounts:
 
 | Run | Tests | Passed | Wall time | Per-call medians |
 |---|---|---|---|---|
