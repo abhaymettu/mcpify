@@ -69,7 +69,7 @@ Results are in [Test evidence](#test-evidence).
 
 ## Limits
 
-- **Notes can stall.** Notes answers Apple Events on its main thread, which also redraws the sidebar from its database. On a machine with heavy disk load, single calls took 8 to 81 seconds, and some hit Apple's 2 minute Apple Event timeout. On a quiet machine the same calls took about 0.2 to 1 second. mcpify waits up to 120 s (`MCPIFY_TIMEOUT_MS` to change it), then returns a clear error.
+- **Notes can stall.** Notes answers Apple Events on its main thread, which also redraws the sidebar from its database. On a machine with heavy disk load, single calls took 8 to 81 seconds, and some hit Apple's 2 minute Apple Event timeout. On a quiet machine the same calls took about 0.15 to 2.5 seconds. Once, Notes stayed slow until it was quit and relaunched. mcpify waits up to 120 s (`MCPIFY_TIMEOUT_MS` to change it), then returns a clear error.
 - **A write that times out may still happen.** The request stays queued inside Notes. The error says so; read the note before retrying.
 - **Creating or deleting folders makes Notes stall for minutes** on the machine I tested. mcpify has no folder tools, and the tests reuse one folder for that reason.
 - **Formatting.** Input is plain text. `replace` drops the old formatting. `append` keeps it. Notes rewrites the HTML it stores (for example `&lt` without the semicolon).
@@ -89,7 +89,24 @@ Note ids in the transcripts have the Notes store UUID replaced with `<store>`.
 
 ## Test evidence
 
-(Filled in from the final run below.)
+Final runs, 2026-10-21 01:20 to 01:23 local time, macOS 26 (Darwin 25.5.0), Node 26.10.0, MCP SDK 1.32.1, a Notes library of about 350 notes in three accounts:
+
+| Run | Tests | Passed | Wall time | Per-call medians |
+|---|---|---|---|---|
+| 1 | 15 | 15 | 8.7 s | 0.15 to 0.34 s |
+| 2 | 15 | 15 | 5.4 s | 0.15 to 0.34 s |
+| 3 | 15 | 15 | 29.5 s | 0.41 to 2.5 s |
+
+Raw logs are not committed; rerun with `npm test` (it prints a `TIMINGS` line).
+
+Earlier the same night, with another heavy job loading the disk, two runs failed: 9 of 12 tests passed in one, and in the other every end-to-end test failed in setup, because Notes did not answer within 60 s, and later not within Apple's own 120 s. After about an hour of test traffic under that load, Notes stayed slow (3 to 25 s for a trivial call) until it was quit and relaunched. The three passing runs above came after that relaunch.
+
+Bugs the real-app tests found and that are fixed:
+
+- `list_folders` asked each folder for its count separately and took over 60 s. One bulk request takes about 0.3 s.
+- A timed-out call returned the whole JXA script as its error text. It now returns a short message, and for writes it warns that the change may still be applied.
+
+Agent demo: Claude Code 2.1.303 (Sonnet) found and read the seeded note in two tool calls, 4 turns, 16.1 s end to end.
 
 ## License
 

@@ -30,8 +30,9 @@ The clip should only show the test folder, never real notes.
 ## Honest numbers
 
 - Tools: 6 hand-written, 8 generated, for one app.
-- Tests: see README Test evidence for the final counts and conditions.
-- Speed on a quiet machine: about 0.2 to 1.1 s per call, with one 9.7 s outlier. Under heavy disk load: 8 to 81 s per call, with timeouts.
+- Tests: 15, all passing in three runs in a row after Notes was relaunched (5.4 to 29.5 s per run). Two earlier runs failed under heavy disk load because Notes stopped answering.
+- Speed when Notes is healthy: per-call medians 0.15 to 2.5 s, with one 9.7 s outlier earlier. Under heavy disk load: 8 to 81 s per call, with timeouts.
+- Agent demo: 2 tool calls, 16.1 s end to end, correct answer.
 - Apps tried: one (Notes). Apps the generator was tried on: one (Notes).
 
 ## What it is not yet

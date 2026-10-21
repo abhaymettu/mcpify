@@ -1,6 +1,6 @@
 # mcpify demo transcript
 
-Recorded 2026-10-21T05:27:52.516Z on macOS against the real Notes app, over stdio with the official MCP client.
+Recorded 2026-10-21T06:20:56.091Z on macOS against the real Notes app, over stdio with the official MCP client.
 
 ## tools/list
 
@@ -15,7 +15,7 @@ Recorded 2026-10-21T05:27:52.516Z on macOS against the real Notes app, over stdi
 
 ```json
 // call list_folders {}
-// 882 ms
+// 2632 ms
 {
   "shown": [
     {
@@ -33,9 +33,9 @@ Recorded 2026-10-21T05:27:52.516Z on macOS against the real Notes app, over stdi
 
 ```json
 // call create_note {"title":"Trip packing list","body":"passport\nchargers\nrain jacket","folder_id":"x-coredata://<store>/ICFolder/p735"}
-// 737 ms
+// 2636 ms
 {
-  "id": "x-coredata://<store>/ICNote/p740",
+  "id": "x-coredata://<store>/ICNote/p753",
   "name": "Trip packing list",
   "folder": "mcpify-test",
   "folder_id": "x-coredata://<store>/ICFolder/p735"
@@ -46,30 +46,30 @@ Recorded 2026-10-21T05:27:52.516Z on macOS against the real Notes app, over stdi
 
 ```json
 // call search_notes {"query":"rain jacket"}
-// 977 ms
+// 2350 ms
 {
-  "total": 2,
+  "total": 3,
   "notes": [
     {
-      "id": "x-coredata://<store>/ICNote/p740",
+      "id": "x-coredata://<store>/ICNote/p753",
       "name": "Trip packing list",
-      "modified": "2026-10-21T05:27:54.000Z",
+      "modified": "2026-10-21T06:20:59.000Z",
       "snippet": "Trip packing list\npassport\nchargers\nrain jacket\n"
     }
   ],
-  "other_matches_omitted": 1
+  "other_matches_omitted": 2
 }
 ```
 
 ## Add a line
 
 ```json
-// call update_note {"id":"x-coredata://<store>/ICNote/p740","text":"sunscreen","mode":"append"}
-// 1175 ms
+// call update_note {"id":"x-coredata://<store>/ICNote/p753","text":"sunscreen","mode":"append"}
+// 1849 ms
 {
-  "id": "x-coredata://<store>/ICNote/p740",
+  "id": "x-coredata://<store>/ICNote/p753",
   "name": "Trip packing list",
-  "modified": "2026-10-21T05:27:56.000Z",
+  "modified": "2026-10-21T06:21:05.000Z",
   "mode": "append"
 }
 ```
@@ -77,15 +77,15 @@ Recorded 2026-10-21T05:27:52.516Z on macOS against the real Notes app, over stdi
 ## Read it back
 
 ```json
-// call read_note {"id":"x-coredata://<store>/ICNote/p740"}
-// 865 ms
+// call read_note {"id":"x-coredata://<store>/ICNote/p753"}
+// 931 ms
 {
-  "id": "x-coredata://<store>/ICNote/p740",
+  "id": "x-coredata://<store>/ICNote/p753",
   "name": "Trip packing list",
   "folder": "mcpify-test",
   "folder_id": "x-coredata://<store>/ICFolder/p735",
-  "created": "2026-10-21T05:27:54.000Z",
-  "modified": "2026-10-21T05:27:56.000Z",
+  "created": "2026-10-21T06:20:59.000Z",
+  "modified": "2026-10-21T06:21:05.000Z",
   "locked": false,
   "attachments": 0,
   "text": "Trip packing list\npassport\nchargers\nrain jacket\nsunscreen\n"
@@ -96,7 +96,7 @@ Recorded 2026-10-21T05:27:52.516Z on macOS against the real Notes app, over stdi
 
 ```json
 // call read_note {"id":"x-coredata://<store>/ICNote/p1"}
-// 823 ms, isError
+// 129 ms, isError
 "no note with id x-coredata://<store>/ICNote/p1"
 ```
 
