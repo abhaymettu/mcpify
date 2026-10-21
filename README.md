@@ -63,7 +63,7 @@ Each tool is a small JavaScript for Automation (JXA) function that runs inside `
 - `test/generated.e2e.test.ts`: the same for `mcpify generate /System/Applications/Notes.app`.
 - `test/inspect.test.ts`: the dictionary reader on Notes (scriptable) and Calculator (not scriptable).
 
-The tests work inside one folder named `mcpify-test` in the default account. They create it if needed, and delete the notes they make (deleted notes go to Notes' Recently Deleted). A run cut off by a Notes timeout can leave a test note in that folder; the next run removes it first (the serve suite clears the folder, and the generate suite removes its own `mcpifygen` notes and empty "New Note" notes). They never read or change other notes, except that search runs across all notes for a random token that only the test note contains.
+The tests work inside one folder named `mcpify-test` in the default account. They create it if needed, and delete the notes they make (deleted notes go to Notes' Recently Deleted). A run cut off by a Notes timeout can leave a test note in that folder; the next run removes it first (the serve suite clears the folder, and the generate suite removes its own `mcpifygen` notes and empty notes, which Notes names "New Note" with no other text; a test plants both kinds and checks they are gone). They never read or change other notes, except that search runs across all notes for a random token that only the test note contains.
 
 Results are in [Test evidence](#test-evidence).
 
