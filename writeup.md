@@ -5,9 +5,9 @@ Status: draft for review. Not published. Numbers are from the runs recorded in t
 ## The 20-second clip
 
 1. (0 to 5 s) Terminal: `mcpify inspect /System/Applications/Notes.app`. The app's scripting dictionary scrolls by: accounts, folders, notes, their properties.
-2. (5 to 10 s) `mcpify generate /System/Applications/Notes.app`. An agent connects and gets eight tools it never had, made from that dictionary with no Notes code.
-3. (10 to 17 s) The agent is asked "what's left on my Saturday errands list?" It searches, reads the note, and answers.
-4. (17 to 20 s) Card: "Any Mac app with a scripting dictionary can become an MCP server. Tested against the real app."
+2. (5 to 10 s) `mcpify generate /System/Applications/Notes.app`. The server lists eight read-only tools made from that dictionary with no Notes code (`list_` and `get_` for accounts, folders, notes and attachments). This is the tool list the generate tests check; it isn't recorded as a clip yet.
+3. (10 to 17 s) Claude Code connected to the hand-written server, `mcpify serve notes`, is asked what's left on the Saturday errands list. It searches, reads the note, and answers, in two tool calls (`demo/agent-transcript.md`). This step uses the hand-written server, not the generated one.
+4. (17 to 20 s) Card: "A Mac app's scripting dictionary, turned into an MCP server. One app so far, tested against the real app."
 
 The clip should only show the test folder, never real notes.
 
