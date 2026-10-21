@@ -23,7 +23,7 @@ const timings: Record<string, number[]> = {};
 
 async function call(name: string, args: Record<string, unknown> = {}) {
   const t0 = performance.now();
-  const res = await client.callTool({ name, arguments: args }, undefined, { timeout: 90_000 });
+  const res = await client.callTool({ name, arguments: args }, undefined, { timeout: 180_000 });
   (timings[name] ??= []).push(performance.now() - t0);
   const text = (res.content as { type: string; text: string }[])[0]?.text ?? "";
   return { isError: Boolean(res.isError), text, data: res.isError ? undefined : (res.structuredContent as { result: any }).result };

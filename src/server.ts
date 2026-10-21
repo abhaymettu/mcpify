@@ -15,7 +15,7 @@ export function buildServer(adapter: AppAdapter): McpServer {
       },
       async (args) => {
         try {
-          const result = await runJxa(adapter.app, tool.jxa, args);
+          const result = await runJxa(adapter.app, tool.jxa, args, { writes: tool.writes });
           return {
             content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
             structuredContent: { result },

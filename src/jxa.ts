@@ -1,5 +1,11 @@
 import { execFile } from "node:child_process";
 
+/** Apple's own default Apple Event timeout is 120 s; match it. Override with MCPIFY_TIMEOUT_MS. */
+function defaultTimeoutMs(): number {
+  const v = Number(process.env.MCPIFY_TIMEOUT_MS);
+  return Number.isFinite(v) && v > 0 ? v : 120_000;
+}
+
 export class JxaError extends Error {
   readonly stderr: string;
   constructor(message: string, stderr: string) {
@@ -20,7 +26,7 @@ export function runJxa<T>(
   appName: string,
   fnSource: string,
   args: unknown,
-  timeoutMs = 60_000,
+  { timeoutMs = defaultTimeoutMs(), writes = false }: { timeoutMs?: number; writes?: boolean } = {},
 ): Promise<T> {
   const script = `function run(argv) {
   const app = Application(${JSON.stringify(appName)});
@@ -35,9 +41,17 @@ export function runJxa<T>(
       { timeout: timeoutMs, maxBuffer: 64 * 1024 * 1024 },
       (err, stdout, stderr) => {
         if (err) {
-          const detail = stderr.trim() || err.message;
+          if ((err as { killed?: boolean }).killed) {
+            // The Apple Event stays queued inside the app, so a timed-out write can still land later.
+            const tail = writes
+              ? " The change may still be applied once it catches up; read the note before retrying."
+              : " It may be busy (syncing or reading its store); try again.";
+            return reject(new JxaError(`${appName} did not answer within ${Math.round(timeoutMs / 1000)} s.${tail}`, stderr));
+          }
+          // err.message embeds the whole command line (the script); never surface it.
+          const detail = stderr.trim() || `osascript exited with code ${(err as { code?: unknown }).code}`;
           const m = detail.match(/execution error: (?:Error: )?(.*?)(?: \(-?\d+\))?$/m);
-          return reject(new JxaError(m ? m[1] : detail, stderr));
+          return reject(new JxaError((m ? m[1] : detail).replace(/^(Error: )+/, ""), stderr));
         }
         try {
           resolve(JSON.parse(stdout) as T);
