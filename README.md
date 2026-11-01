@@ -128,7 +128,8 @@ npm run test:unit                       # dictionary model and generator, no App
 npm test                                # live tests: Notes, Reminders (test lists only)
 npm run coverage                        # live sweep over the apps in bench/fixtures.ts
 npm run bench                           # agent suite, both arms (uses your Claude Code login)
-node bench/summarize.ts bench/results/agent-*.jsonl
+node bench/summarize.ts --latest bench/results/agent-*.jsonl   # headline: latest run per arm
+node bench/summarize.ts bench/results/agent-*.jsonl            # first pass, before the 3 generator fixes
 ```
 
 If your terminal lacks Automation permission for an app, set `MCPIFY_OSASCRIPT` to a wrapper that has it, for example `MCPIFY_OSASCRIPT="my-helper osascript"`. The agent suite exposes the same wrapper to the osascript arm.
