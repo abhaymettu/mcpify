@@ -8,3 +8,7 @@
 {"task":"notes-append","app":"Notes","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":5,"toolCalls":4,"toolErrors":0,"ms":40194,"costUsd":0.023407699999999997}
 {"task":"keynote-count","app":"Keynote","arm":"mcpify","rep":1,"setup_failed":true,"error":"Command failed: claude-helper osascript -l JavaScript -e function run(argv){const app=Application(\"Keynote\");const a=JSO"}
 {"task":"keynote-count","app":"Keynote","arm":"osascript","rep":1,"setup_failed":true,"error":"Command failed: claude-helper osascript -l JavaScript -e function run(argv){const app=Application(\"Keynote\");const a=JSO"}
+{"task":"keynote-add","app":"Keynote","arm":"osascript","rep":1,"setup_failed":true,"error":"Command failed: claude-helper osascript -l JavaScript -e function run(argv){const app=Application(\"Keynote\");const a=JSO"}
+{"task":"keynote-add","app":"Keynote","arm":"mcpify","rep":1,"setup_failed":true,"error":"Command failed: claude-helper osascript -l JavaScript -e function run(argv){const app=Application(\"Keynote\");const a=JSO"}
+{"task":"mail-accounts","app":"Mail","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":3914,"costUsd":0.07515960000000001}
+{"task":"mail-accounts","app":"Mail","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":7892,"costUsd":0.0067534}

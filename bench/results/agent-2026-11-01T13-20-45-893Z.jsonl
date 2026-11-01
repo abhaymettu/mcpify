@@ -1,3 +1,10 @@
 {"task":"cal-create","app":"Calendar","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":4,"toolCalls":3,"toolErrors":0,"ms":15014,"costUsd":0.014939800000000001}
 {"task":"cal-create","app":"Calendar","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":6280,"costUsd":0.006462300000000001}
 {"task":"cal-start-time","app":"Calendar","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":7101,"costUsd":0.006264499999999999}
+{"task":"cal-start-time","app":"Calendar","arm":"mcpify","rep":1,"ok":false,"collateral":false,"turns":3,"toolCalls":2,"toolErrors":0,"ms":9941,"costUsd":0.010064}
+{"task":"cal-week-count","app":"Calendar","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":3,"toolCalls":2,"toolErrors":0,"ms":9490,"costUsd":0.0122851}
+{"task":"cal-week-count","app":"Calendar","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":5566,"costUsd":0.0060005}
+{"task":"cal-move","app":"Calendar","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":4,"toolCalls":3,"toolErrors":1,"ms":10779,"costUsd":0.0129716}
+{"task":"cal-move","app":"Calendar","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":6,"toolCalls":5,"toolErrors":0,"ms":25786,"costUsd":0.0269926}
+{"task":"cal-location","app":"Calendar","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":5,"toolCalls":4,"toolErrors":0,"ms":16095,"costUsd":0.0186754}
+{"task":"cal-location","app":"Calendar","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":3,"toolCalls":2,"toolErrors":0,"ms":8791,"costUsd":0.0103124}

@@ -36,11 +36,16 @@ export function jxaPrelude(elements, topLevel, idProp) {
     }
     return s;
   }
+  // Local time with its offset (2026-12-02T12:15:00-06:00): agents misread UTC "Z" times as local.
+  function localIso(d) {
+    const p = function (n) { return (n < 10 ? "0" : "") + n; }, off = -d.getTimezoneOffset();
+    return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()) + "T" + p(d.getHours()) + ":" + p(d.getMinutes()) + ":" + p(d.getSeconds()) + (off >= 0 ? "+" : "-") + p(Math.floor(Math.abs(off) / 60)) + ":" + p(Math.abs(off) % 60);
+  }
   function refOf(path) { return path.map(function (p) { return p[0] + "[" + p[1] + "=" + JSON.stringify(p[2]) + "]"; }).join("/"); }
   function plain(v, maxText, depth) {
     depth = depth || 0;
     if (v === null || v === undefined) return null;
-    if (v instanceof Date) return isNaN(v) ? null : v.toISOString();
+    if (v instanceof Date) return isNaN(v) ? null : localIso(v);
     if (Array.isArray(v)) return v.slice(0, 200).map(function (x) { return plain(x, maxText, depth + 1); });
     if (typeof v === "string") return v.length > maxText ? v.slice(0, maxText) + " [cut, " + v.length + " chars]" : v;
     if (typeof v === "number" || typeof v === "boolean") return v;
