@@ -9,9 +9,10 @@ import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
 
 // Independent check path: raw osascript, no mcpify code involved.
+const [osaCmd, ...osaPre] = (process.env.MCPIFY_OSASCRIPT || "osascript").split(/\s+/);
 function osa<T>(fn: string, args: unknown = {}): T {
   const script = `function run(argv){const app=Application("Notes");const args=JSON.parse(argv[0]);return JSON.stringify((${fn})(app,args));}`;
-  return JSON.parse(execFileSync("osascript", ["-l", "JavaScript", "-e", script, JSON.stringify(args)], { encoding: "utf8" }));
+  return JSON.parse(execFileSync(osaCmd, [...osaPre, "-l", "JavaScript", "-e", script, JSON.stringify(args)], { encoding: "utf8" }));
 }
 
 const TOKEN = `mcpifyprobe${Date.now().toString(36)}`;
@@ -35,7 +36,7 @@ function waitForNotes() {
   for (let i = 0; i < 30 && fast < 2; i++) {
     const t0 = Date.now();
     try {
-      execFileSync("osascript", ["-l", "JavaScript", "-e", 'Application("Notes").folders.length'], { timeout: 20_000 });
+      execFileSync(osaCmd, [...osaPre, "-l", "JavaScript", "-e", 'Application("Notes").folders.length'], { timeout: 20_000 });
       fast = Date.now() - t0 < 3000 ? fast + 1 : 0;
     } catch {
       fast = 0;
@@ -50,7 +51,7 @@ before(async () => {
   // Leftovers from an interrupted run would break the counts below.
   osa(`(app,a)=>{const f=app.folders.byId(a.id);f.notes().forEach(n=>app.delete(n));return true}`, { id: folderId });
   client = new Client({ name: "mcpify-e2e", version: "0.0.0" }, { capabilities: {} });
-  await client.connect(new StdioClientTransport({ command: process.execPath, args: ["src/cli.ts", "serve", "notes"] }));
+  await client.connect(new StdioClientTransport({ command: process.execPath, args: ["src/cli.ts", "serve", "notes"], env: process.env as Record<string, string> }));
 });
 
 after(async () => {

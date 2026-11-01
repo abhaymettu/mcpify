@@ -1,4 +1,4 @@
-// `mcpify generate` builds a server from Notes' scripting dictionary with no Notes-specific code.
+// `mcpify /System/Applications/Notes.app` builds a server from Notes' scripting dictionary with no Notes-specific code.
 // Its answers are checked against raw osascript reads of the real app. Read only, except the one
 // seed note this file creates (with raw osascript) and deletes again. A run cut off by a Notes
 // timeout can leave its seed behind (or an empty "New Note" if the create was interrupted), so
@@ -10,9 +10,10 @@ import { execFileSync } from "node:child_process";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
 
+const [osaCmd, ...osaPre] = (process.env.MCPIFY_OSASCRIPT || "osascript").split(/\s+/);
 function osa<T>(fn: string, args: unknown = {}): T {
   const script = `function run(argv){const app=Application("Notes");const args=JSON.parse(argv[0]);return JSON.stringify((${fn})(app,args));}`;
-  return JSON.parse(execFileSync("osascript", ["-l", "JavaScript", "-e", script, JSON.stringify(args)], { encoding: "utf8", timeout: 180_000 }));
+  return JSON.parse(execFileSync(osaCmd, [...osaPre, "-l", "JavaScript", "-e", script, JSON.stringify(args)], { encoding: "utf8", timeout: 180_000 }));
 }
 
 let client: Client;
@@ -40,7 +41,7 @@ before(async () => {
   clearLeftovers();
   seed = osa(`(app,a)=>{const f=${FOLDER}(app);const n=app.Note({body:"<div><h1>"+a.t+"</h1></div><div>generated check</div>"});f.notes.push(n);return {id:n.id(),folderId:f.id()}}`, { t: TOKEN });
   client = new Client({ name: "mcpify-gen-e2e", version: "0.0.0" });
-  await client.connect(new StdioClientTransport({ command: process.execPath, args: ["src/cli.ts", "generate", "/System/Applications/Notes.app"] }));
+  await client.connect(new StdioClientTransport({ command: process.execPath, args: ["src/cli.ts", "/System/Applications/Notes.app"], env: process.env as Record<string, string> }));
 });
 
 after(async () => {
@@ -49,9 +50,10 @@ after(async () => {
 });
 
 describe("mcpify generate /System/Applications/Notes.app", () => {
-  test("derives list and get tools for every top-level class, all read only", async () => {
+  test("derives list and get tools for every reachable class, all read only", async () => {
     const { tools } = await client.listTools();
-    assert.deepEqual(tools.map((t) => t.name).sort(), ["get_account", "get_attachment", "get_folder", "get_note", "list_accounts", "list_attachments", "list_folders", "list_notes"]);
+    const names = tools.map((t) => t.name);
+    for (const n of ["list_accounts", "get_account", "list_folders", "get_folder", "list_notes", "get_note", "list_attachments", "get_attachment"]) assert.ok(names.includes(n), n);
     for (const t of tools) assert.equal(t.annotations?.readOnlyHint, true, t.name);
   });
 
@@ -59,13 +61,15 @@ describe("mcpify generate /System/Applications/Notes.app", () => {
     const raw = osa<{ folders: number; accounts: number }>(`(app)=>({folders:app.folders.length,accounts:app.accounts.length})`);
     const f = await call("list_folders", { limit: 1000 });
     assert.equal(f.data.total, raw.folders);
-    assert.ok(f.data.items.some((x: any) => x.id === seed.folderId && x.name === "mcpify-test"));
+    assert.ok(f.data.items.some((x: any) => x.id === seed.folderId && x.name === "mcpify-test" && x.ref === `folders[id=${JSON.stringify(seed.folderId)}]`));
+    const found = await call("list_notes", { parent: `folders[id=${JSON.stringify(seed.folderId)}]`, where: { name: TOKEN } });
+    assert.equal(found.data.total, 1, "where filters inside the folder");
     const a = await call("list_accounts");
     assert.equal(a.data.total, raw.accounts);
   });
 
   test("get_note reads the seed note's properties by id", async () => {
-    const { data } = await call("get_note", { id: seed.id });
+    const { data } = await call("get_note", { ref: `notes[id=${JSON.stringify(seed.id)}]` });
     assert.equal(data.name, TOKEN);
     assert.equal(data.id, seed.id);
     assert.ok(data.plaintext.includes("generated check"));
@@ -74,11 +78,11 @@ describe("mcpify generate /System/Applications/Notes.app", () => {
   });
 
   test("get_folder reads a folder; a bad id is a tool error", async () => {
-    const { data } = await call("get_folder", { id: seed.folderId });
+    const { data } = await call("get_folder", { ref: `folders[id=${JSON.stringify(seed.folderId)}]` });
     assert.equal(data.name, "mcpify-test");
-    const bad = await call("get_note", { id: "x-coredata://00000000-0000-0000-0000-000000000000/ICNote/p1" });
+    const bad = await call("get_note", { ref: 'notes[id="x-coredata://00000000-0000-0000-0000-000000000000/ICNote/p1"]' });
     assert.equal(bad.isError, true);
-    assert.match(bad.text, /no note with id/);
+    assert.match(bad.text, /no note at/);
   });
 });
 
