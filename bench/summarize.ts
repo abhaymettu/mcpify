@@ -15,7 +15,11 @@ interface Run {
   error?: string;
 }
 
-const all = process.argv.slice(2).flatMap((f) => readFileSync(f, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l)));
+// --latest keeps each task's most recent run (files are named by start time) instead of its first.
+const latest = process.argv.includes("--latest");
+const files = process.argv.slice(2).filter((a) => a !== "--latest").sort();
+const all = files.flatMap((f) => readFileSync(f, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l)));
+if (latest) all.reverse();
 // A task relaunched after an interrupted worker can appear twice for one arm; the first completed run counts.
 const seen = new Set<string>();
 const runs: Run[] = all.filter((r) => !r.setup_failed && !seen.has(`${r.task}|${r.arm}|${r.rep}`) && seen.add(`${r.task}|${r.arm}|${r.rep}`));
@@ -28,7 +32,7 @@ const median = (xs: number[]) => {
 const pct = (a: number, b: number) => (b ? `${((100 * a) / b).toFixed(0)}%` : "n/a");
 
 const lines: string[] = [];
-lines.push(`${runs.length} runs, ${new Set(runs.map((r) => r.task)).size} tasks, ${new Set(runs.map((r) => r.app)).size} apps, ${skipped} skipped because seeding the test data failed, files: ${process.argv.slice(2).map((f) => f.split("/").pop()).join(", ")}`, "");
+lines.push(`${runs.length} runs, ${new Set(runs.map((r) => r.task)).size} tasks, ${new Set(runs.map((r) => r.app)).size} apps, ${skipped} skipped because seeding the test data failed, files: ${files.map((f) => f.split("/").pop()).join(", ")}`, "");
 lines.push("| Arm | Success | Collateral changes | Median tool calls | Median tool errors | Median time | Total cost (API-equivalent) |", "|---|---|---|---|---|---|---|");
 for (const arm of arms) {
   const rs = runs.filter((r) => r.arm === arm);

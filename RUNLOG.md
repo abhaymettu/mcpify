@@ -79,3 +79,15 @@ When the workers are done:
 ## 07:00 fixes found by the agent suite
 
 The cal-move mcpify run failed: Calendar rejected setting start before end, and `list_calendars` gave no refs because `calendarIdentifier` cannot be read in bulk. Both are fixed in ebfa878. Runs before ebfa878 used the earlier code. After the workers finish, rerun the Calendar tasks (both arms) and report the numbers before and after the fix.
+
+## 07:27 agent suite results
+
+Out of 31 tasks, 29 ran on both arms. The two Keynote tasks were skipped on both arms because Keynote never finished creating its test document. Model: Sonnet. One rep.
+- First pass, as run: mcpify 26/29, osascript 29/29. Median tool calls 4 vs 1, median time 31.3 s vs 8.0 s.
+- Latest run per task, after three generator fixes the suite found: mcpify 28/29, osascript 29/29. Median calls 3 vs 1, time 23.8 s vs 7.9 s, API-equivalent cost $1.39 vs $0.24. Neither arm made any collateral change.
+- Bugs the suite found and that are fixed:
+  1. Calendar rejected an update that set start before end.
+  2. Calendar's identifier cannot be read in bulk, so lists had no refs.
+  3. Dates came back in UTC, and an agent read 18:15Z as local time; dates are now local with an offset.
+- Tables: `bench/results/agent.md` (latest) and `bench/results/agent-first-pass.md`.
+- Still to do: fill README, writeup and meta; humanizer; go public; npx test.

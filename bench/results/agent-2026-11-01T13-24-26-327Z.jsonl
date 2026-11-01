@@ -1,0 +1,4 @@
+{"task":"notes-count","app":"Notes","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":3,"toolCalls":2,"toolErrors":0,"ms":7540,"costUsd":0.0090355}
+{"task":"notes-count","app":"Notes","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":4986,"costUsd":0.0068854}
+{"task":"cal-start-time","app":"Calendar","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":4147,"costUsd":0.0054608999999999994}
+{"task":"cal-start-time","app":"Calendar","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":3,"toolCalls":2,"toolErrors":0,"ms":11271,"costUsd":0.0094548}
