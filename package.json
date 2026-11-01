@@ -1,18 +1,20 @@
 {
   "name": "mcpify",
-  "version": "0.1.0",
-  "private": true,
-  "description": "Turn a closed Mac app into a tested MCP server. First target: Apple Notes.",
+  "version": "0.2.0",
+  "description": "Turn any scriptable Mac app into an MCP server, generated from its scripting dictionary and tested against the real app.",
   "type": "module",
   "bin": {
-    "mcpify": "src/cli.ts"
+    "mcpify": "dist/cli.js"
   },
   "engines": {
     "node": ">=23.6"
   },
   "scripts": {
-    "start": "node src/cli.ts serve notes",
+    "build": "tsc -p tsconfig.build.json",
     "test": "node --test --test-concurrency=1 test/",
+    "test:unit": "node --test test/dictionary.test.ts",
+    "coverage": "node bench/coverage.ts",
+    "bench": "node bench/agent.ts",
     "typecheck": "tsc --noEmit"
   },
   "license": "MIT",
@@ -23,5 +25,24 @@
   "devDependencies": {
     "@types/node": "^26.6.5",
     "typescript": "^7.0.2"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "macos",
+    "applescript",
+    "jxa",
+    "osascript",
+    "agents",
+    "claude"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhaymettu/mcpify.git"
   }
 }
