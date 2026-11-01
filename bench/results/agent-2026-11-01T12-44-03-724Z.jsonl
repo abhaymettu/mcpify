@@ -1,3 +1,16 @@
 {"task":"cal-move","app":"Calendar","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":4,"toolCalls":3,"toolErrors":1,"ms":66426,"costUsd":0.0148129}
 {"task":"cal-move","app":"Calendar","arm":"mcpify","rep":1,"ok":false,"collateral":false,"toolCalls":12,"toolErrors":3,"ms":480357,"error":"exit 143: "}
 {"task":"cal-location","app":"Calendar","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":7,"toolCalls":6,"toolErrors":1,"ms":138270,"costUsd":0.027654300000000007}
+{"task":"cal-location","app":"Calendar","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":3,"toolCalls":2,"toolErrors":0,"ms":76896,"costUsd":0.0101953}
+{"task":"contacts-org","app":"Contacts","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":12431,"costUsd":0.007311300000000001}
+{"task":"contacts-org","app":"Contacts","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":3,"toolCalls":2,"toolErrors":0,"ms":87222,"costUsd":0.0494943}
+{"task":"contacts-title","app":"Contacts","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":5,"toolCalls":4,"toolErrors":0,"ms":40281,"costUsd":0.0871925}
+{"task":"contacts-title","app":"Contacts","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":3,"toolCalls":2,"toolErrors":0,"ms":7372,"costUsd":0.009084400000000001}
+{"task":"contacts-count","app":"Contacts","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":5732,"costUsd":0.006844500000000001}
+{"task":"contacts-count","app":"Contacts","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":3,"toolCalls":2,"toolErrors":0,"ms":7729,"costUsd":0.0124083}
+{"task":"music-create","app":"Music","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":3,"toolCalls":2,"toolErrors":0,"ms":12305,"costUsd":0.208047}
+{"task":"music-create","app":"Music","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":4759,"costUsd":0.0071552}
+{"task":"music-rename","app":"Music","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":7057,"costUsd":0.007801300000000001}
+{"task":"music-rename","app":"Music","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":4,"toolCalls":3,"toolErrors":0,"ms":7621,"costUsd":0.029287800000000003}
+{"task":"music-volume","app":"Music","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":4789,"costUsd":0.09139959999999998}
+{"task":"music-volume","app":"Music","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":6270,"costUsd":0.0067103}

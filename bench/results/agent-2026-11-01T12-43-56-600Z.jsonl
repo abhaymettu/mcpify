@@ -2,3 +2,9 @@
 {"task":"notes-find-secret","app":"Notes","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":14304,"costUsd":0.007489099999999999}
 {"task":"notes-create","app":"Notes","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":15691,"costUsd":0.00834}
 {"task":"notes-create","app":"Notes","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":4,"toolCalls":3,"toolErrors":0,"ms":16897,"costUsd":0.048825999999999994}
+{"task":"notes-count","app":"Notes","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":3,"toolCalls":2,"toolErrors":0,"ms":38718,"costUsd":0.010391599999999999}
+{"task":"notes-count","app":"Notes","arm":"osascript","rep":1,"setup_failed":true,"error":"spawnSync claude-helper ETIMEDOUT"}
+{"task":"notes-append","app":"Notes","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":4,"toolCalls":3,"toolErrors":1,"ms":91191,"costUsd":0.0133711}
+{"task":"notes-append","app":"Notes","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":5,"toolCalls":4,"toolErrors":0,"ms":40194,"costUsd":0.023407699999999997}
+{"task":"keynote-count","app":"Keynote","arm":"mcpify","rep":1,"setup_failed":true,"error":"Command failed: claude-helper osascript -l JavaScript -e function run(argv){const app=Application(\"Keynote\");const a=JSO"}
+{"task":"keynote-count","app":"Keynote","arm":"osascript","rep":1,"setup_failed":true,"error":"Command failed: claude-helper osascript -l JavaScript -e function run(argv){const app=Application(\"Keynote\");const a=JSO"}
