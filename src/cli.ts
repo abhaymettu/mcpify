@@ -1,42 +1,123 @@
 #!/usr/bin/env node
+import { existsSync, readdirSync } from "node:fs";
+import { basename, join } from "node:path";
+import { homedir } from "node:os";
+import { execFileSync } from "node:child_process";
 import { notes } from "./apps/notes.ts";
-import type { AppAdapter } from "./adapter.ts";
-import { inspectApp } from "./sdef.ts";
-import { adapterFromSdef } from "./generic.ts";
-import { basename } from "node:path";
-import { serveStdio } from "./server.ts";
+import { inspectApp, type Dictionary } from "./sdef.ts";
+import { adapterFromDictionary, reachable } from "./generate.ts";
+import { serveStdio, type SafetyOptions } from "./server.ts";
 
-const adapters: Record<string, AppAdapter> = { notes };
-const [cmd, target] = process.argv.slice(2);
+const USAGE = `mcpify: turn a scriptable Mac app into an MCP server, generated from its scripting dictionary.
 
-if (cmd === "serve" && target && adapters[target]) {
-  await serveStdio(adapters[target]);
-} else if (cmd === "generate" && target) {
-  // Read-only server built from the app's dictionary alone.
-  const s = await inspectApp(target);
-  if (!s.scriptable) {
-    console.error(`${target}: no scripting dictionary, nothing to generate.`);
-    process.exit(1);
+usage:
+  mcpify <App> [options]     serve <App> over stdio (a name like Reminders, or a path to a .app)
+  mcpify tools <App> [opts]  print the tools the server would offer, then exit
+  mcpify inspect <App>       show what the app exposes to scripting
+  mcpify apps                list scriptable apps on this Mac
+
+options (read only unless --writes):
+  --writes            add create_, update_ and command tools
+  --allow-delete      also add delete_ tools and destructive commands (needs --writes)
+  --dry-run           write tools describe the change and make none
+  --confirm <mode>    auto (default: ask the user via MCP elicitation if the client can, else a one-time code),
+                      elicit, token, or none
+  --scope <ref>       writes only inside this ref (repeatable), e.g. --scope 'lists[name="Groceries"]'
+  --depth <n>         deepest containment level to generate tools for (default 4)
+
+Claude Code:  claude mcp add reminders -- npx -y github:abhaymettu/mcpify Reminders`;
+
+const APP_DIRS = ["/Applications", "/System/Applications", "/System/Applications/Utilities", "/System/Library/CoreServices", join(homedir(), "Applications")];
+
+export function findApp(name: string): string {
+  if (name.endsWith(".app") && existsSync(name)) return name;
+  const want = name.toLowerCase().replace(/\.app$/, "");
+  for (const d of APP_DIRS) {
+    try {
+      const hit = readdirSync(d).find((f) => f.toLowerCase() === `${want}.app`);
+      if (hit) return join(d, hit);
+    } catch {}
   }
-  await serveStdio(adapterFromSdef(basename(target).replace(/\.app$/, ""), s));
-} else if (cmd === "inspect" && target) {
-  const s = await inspectApp(target);
-  if (!s.scriptable) {
-    console.log(`${target}: no scripting dictionary. An adapter would need the Accessibility API (not in v0).`);
-  } else {
-    for (const suite of s.suites) {
-      console.log(`## ${suite.name}`);
-      if (suite.commands.length) console.log(`  commands: ${suite.commands.join(", ")}`);
-      for (const c of suite.classes) {
-        console.log(`  class ${c.name}: ${c.properties.join(", ") || "(no properties)"}`);
-        if (c.elements.length) console.log(`    contains: ${c.elements.join(", ")}`);
+  try {
+    const found = execFileSync("mdfind", [`kMDItemContentType == "com.apple.application-bundle" && kMDItemFSName == "${want.replace(/"/g, "")}.app"c`], { encoding: "utf8" }).split("\n").filter(Boolean);
+    if (found[0]) return found[0];
+  } catch {}
+  throw new Error(`no app named ${name} (try a full path, or mcpify apps)`);
+}
+
+async function load(target: string): Promise<{ path: string; name: string; dict: Dictionary }> {
+  const path = findApp(target);
+  const dict = await inspectApp(path);
+  if (!dict.scriptable) throw new Error(`${path}: no scripting dictionary, so there is nothing to generate. Apps like this need the Accessibility API, which mcpify does not use.`);
+  return { path, name: basename(path).replace(/\.app$/, ""), dict };
+}
+
+function parseFlags(argv: string[]) {
+  const flags = { writes: false, allowDelete: false, dryRun: false, confirm: "auto" as SafetyOptions["confirm"], scope: [] as string[], depth: 4 };
+  const rest: string[] = [];
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === "--writes") flags.writes = true;
+    else if (a === "--allow-delete") flags.allowDelete = true;
+    else if (a === "--dry-run") flags.dryRun = true;
+    else if (a === "--confirm") flags.confirm = argv[++i] as SafetyOptions["confirm"];
+    else if (a === "--scope") flags.scope.push(argv[++i]);
+    else if (a === "--depth") flags.depth = Number(argv[++i]);
+    else if (a.startsWith("--")) throw new Error(`unknown option ${a}`);
+    else rest.push(a);
+  }
+  if (flags.allowDelete && !flags.writes) throw new Error("--allow-delete needs --writes");
+  if (!["auto", "elicit", "token", "none"].includes(flags.confirm!)) throw new Error("--confirm takes auto, elicit, token or none");
+  return { flags, rest };
+}
+
+async function main() {
+  const { flags, rest } = parseFlags(process.argv.slice(2));
+  const [cmd, target] = rest;
+  const gen = { writes: flags.writes, allowDelete: flags.allowDelete, maxDepth: flags.depth };
+
+  if (!cmd || cmd === "help" || cmd === "-h") {
+    console.log(USAGE);
+  } else if (cmd === "serve" && target === "notes") {
+    // The hand-written Notes server from v0, kept as a reference point for the generated one.
+    await serveStdio(notes, { confirm: "none" });
+  } else if (cmd === "inspect" && target) {
+    const { path, dict } = await load(target).catch((e) => (console.log(e.message), process.exit(0)));
+    const classes = reachable(dict, flags.depth);
+    console.log(`${path}\nsuites: ${dict.suites.join(", ")}`);
+    for (const [name, c] of classes) {
+      const props = c.cls.properties.filter((p) => !["class", "properties"].includes(p.name));
+      console.log(`  ${"  ".repeat(c.depth - 1)}${c.cls.plural} (in ${c.parents.join(", ")})${c.idProp ? ` id: ${c.idProp.name}` : ""}`);
+      console.log(`  ${"  ".repeat(c.depth)}${props.map((p) => p.name + (p.access === "r" ? "" : "*")).join(", ")}`);
+    }
+    const cmds = dict.commands.filter((c) => !/standard|text suite|type definitions/i.test(c.suite));
+    if (cmds.length) console.log(`commands: ${cmds.map((c) => c.name).join(", ")}`);
+    console.log("(* = writable)");
+  } else if (cmd === "tools" && target) {
+    const { name, dict } = await load(target);
+    const a = adapterFromDictionary(name, dict, gen);
+    for (const t of a.tools) console.log(`${t.destructive ? "D" : t.writes ? "W" : "R"}  ${t.name}`);
+    console.log(`${a.tools.length} tools (R read, W write, D destructive)`);
+  } else if (cmd === "apps") {
+    for (const d of APP_DIRS) {
+      let names: string[] = [];
+      try {
+        names = readdirSync(d).filter((f) => f.endsWith(".app"));
+      } catch {}
+      for (const f of names) {
+        try {
+          execFileSync("/usr/bin/defaults", ["read", join(d, f, "Contents/Info"), "OSAScriptingDefinition"], { stdio: "ignore" });
+          console.log(join(d, f));
+        } catch {}
       }
     }
+  } else {
+    const { name, dict } = await load(cmd === "serve" ? target : cmd);
+    await serveStdio(adapterFromDictionary(name, dict, gen), { dryRun: flags.dryRun, confirm: flags.confirm, scope: flags.scope });
   }
-} else {
-  console.error(`usage:
-  mcpify serve <app>      run an MCP server over stdio (apps: ${Object.keys(adapters).join(", ")})
-  mcpify generate <path>  run a read-only MCP server generated from the app's dictionary
-  mcpify inspect <path>   show what a Mac app exposes to scripting, e.g. /System/Applications/Notes.app`);
-  process.exit(2);
 }
+
+main().catch((e) => {
+  console.error(`mcpify: ${(e as Error).message}`);
+  process.exit(1);
+});

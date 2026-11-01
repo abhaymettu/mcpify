@@ -34,17 +34,19 @@ export function runJxa<T>(
   const out = (${fnSource})(app, args);
   return JSON.stringify(out === undefined ? null : out);
 }`;
+  // MCPIFY_OSASCRIPT runs osascript through a wrapper that holds the macOS Automation grants, e.g. "my-helper osascript".
+  const [cmd, ...pre] = (process.env.MCPIFY_OSASCRIPT || "osascript").split(/\s+/);
   return new Promise((resolve, reject) => {
     execFile(
-      "osascript",
-      ["-l", "JavaScript", "-e", script, JSON.stringify(args ?? {})],
+      cmd,
+      [...pre, "-l", "JavaScript", "-e", script, JSON.stringify(args ?? {})],
       { timeout: timeoutMs, maxBuffer: 64 * 1024 * 1024 },
       (err, stdout, stderr) => {
         if (err) {
           if ((err as { killed?: boolean }).killed) {
             // The Apple Event stays queued inside the app, so a timed-out write can still land later.
             const tail = writes
-              ? " The change may still be applied once it catches up; read the note before retrying."
+              ? " The change may still be applied once it catches up; read it back before retrying."
               : " It may be busy (syncing or reading its store); try again.";
             return reject(new JxaError(`${appName} did not answer within ${Math.round(timeoutMs / 1000)} s.${tail}`, stderr));
           }
