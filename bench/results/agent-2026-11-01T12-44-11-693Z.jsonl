@@ -1,1 +1,14 @@
 {"task":"finder-count-md","app":"Finder","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":19023,"costUsd":0.0078056}
+{"task":"finder-count-md","app":"Finder","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":7,"toolCalls":6,"toolErrors":0,"ms":38670,"costUsd":0.08110469999999997}
+{"task":"finder-new-folder","app":"Finder","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":7,"toolCalls":6,"toolErrors":1,"ms":42663,"costUsd":0.15491129999999997}
+{"task":"finder-new-folder","app":"Finder","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":6449,"costUsd":0.0079482}
+{"task":"finder-rename","app":"Finder","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":6992,"costUsd":0.008174800000000001}
+{"task":"finder-rename","app":"Finder","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":10,"toolCalls":9,"toolErrors":0,"ms":21159,"costUsd":0.052612400000000004}
+{"task":"finder-comment","app":"Finder","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":12,"toolCalls":11,"toolErrors":1,"ms":26890,"costUsd":0.0610704}
+{"task":"finder-comment","app":"Finder","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":6951,"costUsd":0.008606299999999999}
+{"task":"finder-largest","app":"Finder","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":10612,"costUsd":0.007860599999999999}
+{"task":"finder-largest","app":"Finder","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":11,"toolCalls":10,"toolErrors":2,"ms":53717,"costUsd":0.0664237}
+{"task":"textedit-new","app":"TextEdit","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":3,"toolCalls":2,"toolErrors":0,"ms":23761,"costUsd":0.025324299999999998}
+{"task":"textedit-new","app":"TextEdit","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":12474,"costUsd":0.0079173}
+{"task":"textedit-read","app":"TextEdit","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":10881,"costUsd":0.007454499999999999}
+{"task":"textedit-read","app":"TextEdit","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":11372,"costUsd":0.0191677}

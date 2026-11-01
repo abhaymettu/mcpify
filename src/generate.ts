@@ -209,6 +209,7 @@ export function adapterFromDictionary(appName: string, dict: Dictionary, opts: G
         const fields = (args.fields && args.fields.length ? args.fields : ${JSON.stringify(summary)}).filter(function (f) { return JX[f]; });
         const need = fields.slice();
         if (SEL[1] && need.indexOf(SEL[0] === "id" ? ${JSON.stringify(info.idProp?.name ?? "")} : "name") < 0) need.push(SEL[0] === "id" ? ${JSON.stringify(info.idProp?.name ?? "")} : "name");
+        if (${info.hasName} && need.indexOf("name") < 0) need.push("name");
         if (!spec) for (const k of keys) if (need.indexOf(k) < 0) need.push(k);
         const src = spec || coll, cols = {}, unreadable = [];
         const total = src.length;
@@ -228,6 +229,8 @@ export function adapterFromDictionary(appName: string, dict: Dictionary, opts: G
           const keyProp = SEL[0] === "id" ? ${JSON.stringify(info.idProp?.name ?? "")} : "name";
           if (SEL[0] === "index") { if (!filtered && !keys.length) it.ref = refOf(base.concat([[${JSON.stringify(plural)}, "index", i]])); }
           else if (cols[keyProp] && cols[keyProp][i] !== undefined && cols[keyProp][i] !== null) it.ref = refOf(base.concat([[${JSON.stringify(plural)}, SEL[0], cols[keyProp][i]]]));
+          // Some identifiers cannot be read in bulk (Calendar's calendarIdentifier); select by name instead.
+          else if (cols.name && cols.name[i] !== undefined && cols.name[i] !== null) it.ref = refOf(base.concat([[${JSON.stringify(plural)}, "name", cols.name[i]]]));
           for (const f of fields) it[f] = cols[f] ? plain(cols[f][i], 200) : null;
           return it;
         });
@@ -321,8 +324,9 @@ export function adapterFromDictionary(appName: string, dict: Dictionary, opts: G
           jxa: `(app, args) => {${prelude}
         ${coerce}
         const o = resolve(args.paths.ref);
-        const p = props(args.properties);
-        for (const k of Object.keys(p)) o[k] = p[k];
+        const p = props(args.properties), keys = Object.keys(p);
+        // Apps validate after each assignment (Calendar rejects a start after the end), so if one order fails try the other.
+        try { for (const k of keys) o[k] = p[k]; } catch (e) { for (const k of keys.slice().reverse()) o[k] = p[k]; }
         const after = {};
         for (const k of Object.keys(args.properties || {})) { try { after[k] = plain(o[JX[k]](), 500); } catch (e) {} }
         return { updated: true, ref: args.ref, now: after };

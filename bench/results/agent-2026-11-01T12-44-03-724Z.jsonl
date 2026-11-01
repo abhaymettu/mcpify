@@ -1,0 +1,2 @@
+{"task":"cal-move","app":"Calendar","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":4,"toolCalls":3,"toolErrors":1,"ms":66426,"costUsd":0.0148129}
+{"task":"cal-move","app":"Calendar","arm":"mcpify","rep":1,"ok":false,"collateral":false,"toolCalls":12,"toolErrors":3,"ms":480357,"error":"exit 143: "}
