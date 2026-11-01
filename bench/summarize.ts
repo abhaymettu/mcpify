@@ -23,7 +23,8 @@ if (latest) all.reverse();
 // A task relaunched after an interrupted worker can appear twice for one arm; the first completed run counts.
 const seen = new Set<string>();
 const runs: Run[] = all.filter((r) => !r.setup_failed && !seen.has(`${r.task}|${r.arm}|${r.rep}`) && seen.add(`${r.task}|${r.arm}|${r.rep}`));
-const skipped = all.length - runs.length;
+const ran = new Set(runs.map((r) => r.task));
+const skipped = new Set(all.filter((r) => r.setup_failed && !ran.has(r.task)).map((r) => r.task)).size;
 const arms = [...new Set(runs.map((r) => r.arm))];
 const median = (xs: number[]) => {
   const s = [...xs].sort((a, b) => a - b);
@@ -32,7 +33,7 @@ const median = (xs: number[]) => {
 const pct = (a: number, b: number) => (b ? `${((100 * a) / b).toFixed(0)}%` : "n/a");
 
 const lines: string[] = [];
-lines.push(`${runs.length} runs, ${new Set(runs.map((r) => r.task)).size} tasks, ${new Set(runs.map((r) => r.app)).size} apps, ${skipped} skipped because seeding the test data failed, files: ${files.map((f) => f.split("/").pop()).join(", ")}`, "");
+lines.push(`${runs.length} runs, ${new Set(runs.map((r) => r.task)).size} tasks, ${new Set(runs.map((r) => r.app)).size} apps, ${skipped} tasks skipped because seeding the test data failed, files: ${files.map((f) => f.split("/").pop()).join(", ")}`, "");
 lines.push("| Arm | Success | Collateral changes | Median tool calls | Median tool errors | Median time | Total cost (API-equivalent) |", "|---|---|---|---|---|---|---|");
 for (const arm of arms) {
   const rs = runs.filter((r) => r.arm === arm);

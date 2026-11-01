@@ -1,4 +1,4 @@
-58 runs, 29 tasks, 8 apps, 20 skipped because seeding the test data failed, files: agent-2026-11-01T12-06-39-312Z.jsonl, agent-2026-11-01T12-22-08-767Z.jsonl, agent-2026-11-01T12-43-56-600Z.jsonl, agent-2026-11-01T12-44-03-724Z.jsonl, agent-2026-11-01T12-44-11-693Z.jsonl, agent-2026-11-01T13-20-45-893Z.jsonl, agent-2026-11-01T13-24-26-327Z.jsonl, agent-2026-11-01T13-26-19-026Z.jsonl
+58 runs, 29 tasks, 8 apps, 2 tasks skipped because seeding the test data failed, files: agent-2026-11-01T12-06-39-312Z.jsonl, agent-2026-11-01T12-22-08-767Z.jsonl, agent-2026-11-01T12-43-56-600Z.jsonl, agent-2026-11-01T12-44-03-724Z.jsonl, agent-2026-11-01T12-44-11-693Z.jsonl, agent-2026-11-01T13-20-45-893Z.jsonl, agent-2026-11-01T13-24-26-327Z.jsonl, agent-2026-11-01T13-26-19-026Z.jsonl
 
 | Arm | Success | Collateral changes | Median tool calls | Median tool errors | Median time | Total cost (API-equivalent) |
 |---|---|---|---|---|---|---|

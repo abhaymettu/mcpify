@@ -84,10 +84,31 @@ The cal-move mcpify run failed: Calendar rejected setting start before end, and 
 
 Out of 31 tasks, 29 ran on both arms. The two Keynote tasks were skipped on both arms because Keynote never finished creating its test document. Model: Sonnet. One rep.
 - First pass, as run: mcpify 26/29, osascript 29/29. Median tool calls 4 vs 1, median time 31.3 s vs 8.0 s.
-- Latest run per task, after three generator fixes the suite found: mcpify 28/29, osascript 29/29. Median calls 3 vs 1, time 23.8 s vs 7.9 s, API-equivalent cost $1.39 vs $0.24. Neither arm made any collateral change.
+- Latest run per task, after three generator fixes the suite found: mcpify 29/29, osascript 29/29. Median calls 3 vs 1, time 23.8 s vs 7.9 s, API-equivalent cost $1.41 vs $0.24. Neither arm made any collateral change.
 - Bugs the suite found and that are fixed:
   1. Calendar rejected an update that set start before end.
   2. Calendar's identifier cannot be read in bulk, so lists had no refs.
   3. Dates came back in UTC, and an agent read 18:15Z as local time; dates are now local with an offset.
 - Tables: `bench/results/agent.md` (latest) and `bench/results/agent-first-pass.md`.
 - Still to do: fill README, writeup and meta; humanizer; go public; npx test.
+
+## 07:35 public, fresh clone and npx
+
+The repo is public. A fresh clone from GitHub passed `npm install` and `npm run test:unit` (tests 6, pass 6, fail 0), and `node dist/cli.js tools Calendar` listed 19 tools. I reran the headline agent numbers with `node bench/summarize.ts --latest` on the result files listed in `bench/results/agent.md`: mcpify 29/29, osascript 29/29, median calls 3 vs 1, median time 23.8 s vs 7.9 s. The summary now counts skipped tasks rather than records (2 tasks, both Keynote).
+
+`npx -y github:abhaymettu/mcpify tools Reminders`, run from an empty temp dir:
+
+```
+R  get_application
+R  list_documents
+R  get_document
+R  list_windows
+R  get_window
+R  list_accounts
+R  get_account
+R  list_lists
+R  get_list
+R  list_reminders
+R  get_reminder
+11 tools (R read, W write, D destructive)
+```
