@@ -85,7 +85,10 @@ function includedSuites(inc: XmlNode): XmlNode[] {
 export function parseSdef(xml: string, app = "?"): Dictionary {
   const dict = parseXml(xml).children.find((c) => c.tag === "dictionary");
   if (!dict) return emptyDictionary(app);
-  const suites = dict.children.flatMap((c) => (c.tag === "suite" ? [c] : c.tag === "xi:include" ? includedSuites(c) : []));
+  // An include can stand in for whole suites, or sit inside a suite and splice in the included suites' contents.
+  const suites = dict.children
+    .flatMap((c) => (c.tag === "suite" ? [c] : c.tag === "xi:include" ? includedSuites(c) : []))
+    .map((s) => ({ ...s, children: s.children.flatMap((c) => (c.tag === "xi:include" ? includedSuites(c).flatMap((t) => t.children) : [c])) }));
   const raw = new Map<string, ClassDef>();
   const commands = new Map<string, Command>();
   const enums = new Map<string, string[]>();

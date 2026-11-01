@@ -164,7 +164,8 @@ export function adapterFromDictionary(appName: string, dict: Dictionary, opts: G
     const summary = [
       ...(info.idProp ? [info.idProp.name] : []),
       ...(info.hasName ? ["name"] : []),
-      ...props.filter((p) => !HEAVY.test(p.name) && p.name !== "name" && p !== info.idProp && ["text", "number", "boolean", "date", "enum"].includes(scalarKinds[p.name])).slice(0, 6).map((p) => p.name),
+      // Each field is one Apple Event per list call, so the default summary stays small.
+      ...props.filter((p) => !HEAVY.test(p.name) && !/^(creation|modification) date$/.test(p.name) && p.name !== "name" && p !== info.idProp && ["text", "number", "boolean", "date", "enum"].includes(scalarKinds[p.name])).slice(0, 3).map((p) => p.name),
     ];
     const filterable = props.filter((p) => ["text", "number", "boolean", "date", "enum"].includes(scalarKinds[p.name]));
     const jx = Object.fromEntries(props.map((p) => [p.name, jxaName(p.name)]));
@@ -292,8 +293,11 @@ export function adapterFromDictionary(appName: string, dict: Dictionary, opts: G
         ${coerce}
         const base = args.paths.parent || [];
         const coll = base.length ? resolve(base)[${JSON.stringify(plural)}] : app[${JSON.stringify(plural)}];
-        const o = app[${JSON.stringify(ctorName(name))}](props(args.properties));
+        const p = props(args.properties);
+        const o = app[${JSON.stringify(ctorName(name))}](p);
         coll.push(o);
+        // Some apps (TextEdit) make the object but drop properties given at creation; set those again.
+        for (const k of Object.keys(p)) { try { const v = o[k](); if (String(v) !== String(p[k]) && !(v instanceof Date)) o[k] = p[k]; } catch (e) {} }
         const seg = ${keyRead};
         return { created: true, ref: seg ? refOf(base.concat([seg])) : null };
       }`,

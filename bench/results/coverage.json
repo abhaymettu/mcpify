@@ -1,0 +1,3249 @@
+{
+  "when": "2026-11-01T11:49:00.654Z",
+  "macos": "26.5.2",
+  "apps": [
+    {
+      "app": "Reminders",
+      "scriptable": true,
+      "classes": 5,
+      "tools": {
+        "read": 11,
+        "write": 6,
+        "destructive": 3
+      },
+      "results": [
+        {
+          "tool": "get_application",
+          "kind": "read",
+          "status": "pass",
+          "ms": 567
+        },
+        {
+          "tool": "list_documents",
+          "kind": "read",
+          "status": "pass",
+          "ms": 10422
+        },
+        {
+          "tool": "get_document",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_document",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 678
+        },
+        {
+          "tool": "get_window",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_window",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_accounts",
+          "kind": "read",
+          "status": "pass",
+          "ms": 2021
+        },
+        {
+          "tool": "get_account",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "list_lists",
+          "kind": "read",
+          "status": "pass",
+          "ms": 2470
+        },
+        {
+          "tool": "get_list",
+          "kind": "read",
+          "status": "pass",
+          "ms": 2256
+        },
+        {
+          "tool": "create_list",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_list",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_list",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_reminders",
+          "kind": "read",
+          "status": "pass",
+          "ms": 44633
+        },
+        {
+          "tool": "get_reminder",
+          "kind": "read",
+          "status": "pass",
+          "ms": 403
+        },
+        {
+          "tool": "create_reminder",
+          "kind": "write",
+          "status": "pass",
+          "ms": 1203
+        },
+        {
+          "tool": "update_reminder",
+          "kind": "write",
+          "status": "pass",
+          "ms": 619
+        },
+        {
+          "tool": "delete_reminder",
+          "kind": "destructive",
+          "status": "pass",
+          "ms": 938
+        },
+        {
+          "tool": "show",
+          "kind": "write",
+          "status": "untested"
+        }
+      ]
+    },
+    {
+      "app": "Notes",
+      "scriptable": true,
+      "classes": 6,
+      "tools": {
+        "read": 13,
+        "write": 9,
+        "destructive": 5
+      },
+      "results": [
+        {
+          "tool": "get_application",
+          "kind": "read",
+          "status": "pass",
+          "ms": 42
+        },
+        {
+          "tool": "list_documents",
+          "kind": "read",
+          "status": "pass",
+          "ms": 119
+        },
+        {
+          "tool": "get_document",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_document",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 359
+        },
+        {
+          "tool": "get_window",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_window",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_accounts",
+          "kind": "read",
+          "status": "pass",
+          "ms": 466
+        },
+        {
+          "tool": "get_account",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_account",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_account",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_account",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_folders",
+          "kind": "read",
+          "status": "pass",
+          "ms": 190
+        },
+        {
+          "tool": "get_folder",
+          "kind": "read",
+          "status": "pass",
+          "ms": 145
+        },
+        {
+          "tool": "create_folder",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_folder",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_folder",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_notes",
+          "kind": "read",
+          "status": "pass",
+          "ms": 177
+        },
+        {
+          "tool": "get_note",
+          "kind": "read",
+          "status": "pass",
+          "ms": 516
+        },
+        {
+          "tool": "create_note",
+          "kind": "write",
+          "status": "pass",
+          "ms": 2383
+        },
+        {
+          "tool": "update_note",
+          "kind": "write",
+          "status": "pass",
+          "ms": 459
+        },
+        {
+          "tool": "delete_note",
+          "kind": "destructive",
+          "status": "pass",
+          "ms": 1653
+        },
+        {
+          "tool": "list_attachments",
+          "kind": "read",
+          "status": "pass",
+          "ms": 6743
+        },
+        {
+          "tool": "get_attachment",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_attachment",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "open_note_location",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "show",
+          "kind": "write",
+          "status": "untested"
+        }
+      ]
+    },
+    {
+      "app": "Calendar",
+      "scriptable": true,
+      "classes": 9,
+      "tools": {
+        "read": 19,
+        "write": 14,
+        "destructive": 3
+      },
+      "results": [
+        {
+          "tool": "get_application",
+          "kind": "read",
+          "status": "pass",
+          "ms": 49
+        },
+        {
+          "tool": "list_documents",
+          "kind": "read",
+          "status": "pass",
+          "ms": 115
+        },
+        {
+          "tool": "get_document",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_document",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 158
+        },
+        {
+          "tool": "get_window",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_window",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_calendars",
+          "kind": "read",
+          "status": "pass",
+          "ms": 516
+        },
+        {
+          "tool": "get_calendar",
+          "kind": "read",
+          "status": "pass",
+          "ms": 3387
+        },
+        {
+          "tool": "create_calendar",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_calendar",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_calendar",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_events",
+          "kind": "read",
+          "status": "pass",
+          "ms": 2348
+        },
+        {
+          "tool": "get_event",
+          "kind": "read",
+          "status": "pass",
+          "ms": 1061
+        },
+        {
+          "tool": "create_event",
+          "kind": "write",
+          "status": "pass",
+          "ms": 1636
+        },
+        {
+          "tool": "update_event",
+          "kind": "write",
+          "status": "pass",
+          "ms": 1038
+        },
+        {
+          "tool": "delete_event",
+          "kind": "destructive",
+          "status": "pass",
+          "ms": 775
+        },
+        {
+          "tool": "list_attendees",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_attendee",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "list_display_alarms",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_display_alarm",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_display_alarm",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_mail_alarms",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_mail_alarm",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_mail_alarm",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_open_file_alarms",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_open_file_alarm",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_open_file_alarm",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_sound_alarms",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_sound_alarm",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_sound_alarm",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "reload_calendars",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "switch_view",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "view_calendar",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "geturl",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "show",
+          "kind": "write",
+          "status": "untested"
+        }
+      ]
+    },
+    {
+      "app": "Contacts",
+      "scriptable": true,
+      "classes": 12,
+      "tools": {
+        "read": 25,
+        "write": 26,
+        "destructive": 12
+      },
+      "results": [
+        {
+          "tool": "get_application",
+          "kind": "read",
+          "status": "pass",
+          "ms": 569
+        },
+        {
+          "tool": "list_documents",
+          "kind": "read",
+          "status": "pass",
+          "ms": 2120
+        },
+        {
+          "tool": "get_document",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_document",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 4278
+        },
+        {
+          "tool": "get_window",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_window",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_groups",
+          "kind": "read",
+          "status": "pass",
+          "ms": 11142
+        },
+        {
+          "tool": "get_group",
+          "kind": "read",
+          "status": "pass",
+          "ms": 19159
+        },
+        {
+          "tool": "create_group",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_group",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_group",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_people",
+          "kind": "read",
+          "status": "pass",
+          "ms": 33126
+        },
+        {
+          "tool": "get_person",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_person",
+          "kind": "write",
+          "status": "fail",
+          "ms": 139,
+          "error": "refused: create_person has no target inside the allowed scope (groups[name=\"…\"])"
+        },
+        {
+          "tool": "update_person",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_person",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_urls",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_url",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_url",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_url",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_url",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_addresses",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_address",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_address",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_address",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_address",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_phones",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_phone",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_phone",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_phone",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_phone",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_custom_dates",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_custom_date",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_custom_date",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_custom_date",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_custom_date",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_instant_messages",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_instant_message",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_instant_message",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_instant_message",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_instant_message",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_social_profiles",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_social_profile",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_social_profile",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_social_profile",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_social_profile",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_related_names",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_related_name",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_related_name",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_related_name",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_related_name",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_emails",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_email",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_email",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_email",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_email",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "add",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "remove",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "action_property",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "action_title",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "perform_action",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "should_enable_action",
+          "kind": "write",
+          "status": "untested"
+        }
+      ]
+    },
+    {
+      "app": "Music",
+      "scriptable": true,
+      "classes": 23,
+      "tools": {
+        "read": 47,
+        "write": 56,
+        "destructive": 18
+      },
+      "results": [
+        {
+          "tool": "get_application",
+          "kind": "read",
+          "status": "pass",
+          "ms": 671
+        },
+        {
+          "tool": "list_airplay_devices",
+          "kind": "read",
+          "status": "pass",
+          "ms": 5224
+        },
+        {
+          "tool": "get_airplay_device",
+          "kind": "read",
+          "status": "pass",
+          "ms": 1416
+        },
+        {
+          "tool": "create_airplay_device",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_airplay_device",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_airplay_device",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_browser_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 4300
+        },
+        {
+          "tool": "get_browser_window",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_browser_window",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_encoders",
+          "kind": "read",
+          "status": "pass",
+          "ms": 3341
+        },
+        {
+          "tool": "get_encoder",
+          "kind": "read",
+          "status": "pass",
+          "ms": 2131
+        },
+        {
+          "tool": "create_encoder",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_encoder",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_encoder",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_eq_presets",
+          "kind": "read",
+          "status": "pass",
+          "ms": 1960
+        },
+        {
+          "tool": "get_eq_preset",
+          "kind": "read",
+          "status": "pass",
+          "ms": 1760
+        },
+        {
+          "tool": "create_eq_preset",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_eq_preset",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_eq_preset",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_eq_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 9612
+        },
+        {
+          "tool": "get_eq_window",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_eq_window",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_miniplayer_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 1027
+        },
+        {
+          "tool": "get_miniplayer_window",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_miniplayer_window",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_playlists",
+          "kind": "read",
+          "status": "pass",
+          "ms": 660
+        },
+        {
+          "tool": "get_playlist",
+          "kind": "read",
+          "status": "pass",
+          "ms": 517
+        },
+        {
+          "tool": "create_playlist",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_playlist",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_playlist",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_playlist_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 7450
+        },
+        {
+          "tool": "get_playlist_window",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_playlist_window",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_sources",
+          "kind": "read",
+          "status": "pass",
+          "ms": 1573
+        },
+        {
+          "tool": "get_source",
+          "kind": "read",
+          "status": "pass",
+          "ms": 2878
+        },
+        {
+          "tool": "create_source",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_source",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_source",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_tracks",
+          "kind": "read",
+          "status": "pass",
+          "ms": 652
+        },
+        {
+          "tool": "get_track",
+          "kind": "read",
+          "status": "pass",
+          "ms": 3333
+        },
+        {
+          "tool": "create_track",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_track",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_track",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_video_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 342
+        },
+        {
+          "tool": "get_video_window",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_video_window",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_visuals",
+          "kind": "read",
+          "status": "pass",
+          "ms": 2878
+        },
+        {
+          "tool": "get_visual",
+          "kind": "read",
+          "status": "pass",
+          "ms": 511
+        },
+        {
+          "tool": "create_visual",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_visual",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_visual",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 1091
+        },
+        {
+          "tool": "get_window",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_window",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_artworks",
+          "kind": "read",
+          "status": "pass",
+          "ms": 1871
+        },
+        {
+          "tool": "get_artwork",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_artwork",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_artwork",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_artwork",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_audio_cd_playlists",
+          "kind": "read",
+          "status": "pass",
+          "ms": 697
+        },
+        {
+          "tool": "get_audio_cd_playlist",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_audio_cd_playlist",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_audio_cd_playlist",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_audio_cd_playlist",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_library_playlists",
+          "kind": "read",
+          "status": "pass",
+          "ms": 3761
+        },
+        {
+          "tool": "get_library_playlist",
+          "kind": "read",
+          "status": "pass",
+          "ms": 3800
+        },
+        {
+          "tool": "create_library_playlist",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_library_playlist",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_library_playlist",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_radio_tuner_playlists",
+          "kind": "read",
+          "status": "pass",
+          "ms": 527
+        },
+        {
+          "tool": "get_radio_tuner_playlist",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_radio_tuner_playlist",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_radio_tuner_playlist",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_radio_tuner_playlist",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_subscription_playlists",
+          "kind": "read",
+          "status": "pass",
+          "ms": 834
+        },
+        {
+          "tool": "get_subscription_playlist",
+          "kind": "read",
+          "status": "pass",
+          "ms": 1321
+        },
+        {
+          "tool": "create_subscription_playlist",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_subscription_playlist",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_subscription_playlist",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_user_playlists",
+          "kind": "read",
+          "status": "pass",
+          "ms": 1666
+        },
+        {
+          "tool": "get_user_playlist",
+          "kind": "read",
+          "status": "pass",
+          "ms": 313
+        },
+        {
+          "tool": "create_user_playlist",
+          "kind": "write",
+          "status": "fail",
+          "ms": 2,
+          "error": "MCP error -32602: Input validation error: Invalid arguments for tool create_user_playlist: Invalid input: expected string, received undefined at parent"
+        },
+        {
+          "tool": "update_user_playlist",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_user_playlist",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_audio_cd_tracks",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_audio_cd_track",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_audio_cd_track",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_audio_cd_track",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_audio_cd_track",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_file_tracks",
+          "kind": "read",
+          "status": "pass",
+          "ms": 413
+        },
+        {
+          "tool": "get_file_track",
+          "kind": "read",
+          "status": "pass",
+          "ms": 5678
+        },
+        {
+          "tool": "create_file_track",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_file_track",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_file_track",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_url_tracks",
+          "kind": "read",
+          "status": "pass",
+          "ms": 257
+        },
+        {
+          "tool": "get_url_track",
+          "kind": "read",
+          "status": "pass",
+          "ms": 881
+        },
+        {
+          "tool": "create_url_track",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_url_track",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_url_track",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_shared_tracks",
+          "kind": "read",
+          "status": "pass",
+          "ms": 2283
+        },
+        {
+          "tool": "get_shared_track",
+          "kind": "read",
+          "status": "pass",
+          "ms": 462
+        },
+        {
+          "tool": "create_shared_track",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_shared_track",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_shared_track",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "back_track",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "convert",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "download",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "export",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "fast_forward",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "next_track",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "pause",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "play",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "playpause",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "previous_track",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "refresh",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "resume",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "reveal",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "rewind",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "search",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "stop",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "open_location",
+          "kind": "write",
+          "status": "untested"
+        }
+      ]
+    },
+    {
+      "app": "Finder",
+      "scriptable": false,
+      "classes": 0,
+      "tools": {
+        "read": 0,
+        "write": 0,
+        "destructive": 0
+      },
+      "results": [],
+      "note": "Command failed: claude-helper osascript -l JavaScript -e function run(argv){const app=Application(\"…\");const args=JSON.parse(argv[0]);const r=((app) => { const "
+    },
+    {
+      "app": "TextEdit",
+      "scriptable": true,
+      "classes": 2,
+      "tools": {
+        "read": 5,
+        "write": 3,
+        "destructive": 1
+      },
+      "results": [
+        {
+          "tool": "get_application",
+          "kind": "read",
+          "status": "pass",
+          "ms": 86
+        },
+        {
+          "tool": "list_documents",
+          "kind": "read",
+          "status": "pass",
+          "ms": 1428
+        },
+        {
+          "tool": "get_document",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_document",
+          "kind": "write",
+          "status": "fail",
+          "ms": 2688,
+          "error": "created, but raw osascript did not find it"
+        },
+        {
+          "tool": "update_document",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_document",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 349
+        },
+        {
+          "tool": "get_window",
+          "kind": "read",
+          "status": "pass",
+          "ms": 335
+        },
+        {
+          "tool": "update_window",
+          "kind": "write",
+          "status": "untested"
+        }
+      ]
+    },
+    {
+      "app": "Keynote",
+      "scriptable": false,
+      "classes": 0,
+      "tools": {
+        "read": 0,
+        "write": 0,
+        "destructive": 0
+      },
+      "results": [],
+      "note": "spawnSync claude-helper ETIMEDOUT"
+    },
+    {
+      "app": "Numbers",
+      "scriptable": true,
+      "classes": 18,
+      "tools": {
+        "read": 37,
+        "write": 34,
+        "destructive": 10
+      },
+      "results": [
+        {
+          "tool": "get_application",
+          "kind": "read",
+          "status": "pass",
+          "ms": 738
+        },
+        {
+          "tool": "list_documents",
+          "kind": "read",
+          "status": "fail",
+          "ms": 45091,
+          "error": "Numbers did not answer within 45 s. It may be busy (syncing or reading its store); try again."
+        },
+        {
+          "tool": "get_document",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_document",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_document",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_document",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 5401
+        },
+        {
+          "tool": "get_window",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_window",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_templates",
+          "kind": "read",
+          "status": "pass",
+          "ms": 21507
+        },
+        {
+          "tool": "get_template",
+          "kind": "read",
+          "status": "pass",
+          "ms": 1313
+        },
+        {
+          "tool": "list_sheets",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_sheet",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_sheet",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_sheet",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_sheet",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_audio_clips",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_audio_clip",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_audio_clip",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_charts",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_chart",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_chart",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_images",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_image",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_image",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_iwork_items",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_iwork_item",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_iwork_item",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_groups",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_group",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_group",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_lines",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_line",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_line",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_movies",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_movie",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_movie",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_shapes",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_shape",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_shape",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_tables",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_table",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_table",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_table",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_table",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_text_items",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_text_item",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_text_item",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_cells",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_cell",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_cell",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_cell",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_cell",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_rows",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_row",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_row",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_row",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_row",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_columns",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_column",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_column",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_column",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_column",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_ranges",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_range",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_range",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_range",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_range",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "clear",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "merge",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "sort",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "unmerge",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "set_password",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "remove_password",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "transpose",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "export",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "add_column_after",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "add_column_before",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "add_row_above",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "add_row_below",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "remove",
+          "kind": "destructive",
+          "status": "untested"
+        }
+      ]
+    },
+    {
+      "app": "Pages",
+      "scriptable": true,
+      "classes": 23,
+      "tools": {
+        "read": 47,
+        "write": 33,
+        "destructive": 8
+      },
+      "results": [
+        {
+          "tool": "get_application",
+          "kind": "read",
+          "status": "pass",
+          "ms": 138
+        },
+        {
+          "tool": "list_documents",
+          "kind": "read",
+          "status": "fail",
+          "ms": 45017,
+          "error": "Pages did not answer within 45 s. It may be busy (syncing or reading its store); try again."
+        },
+        {
+          "tool": "get_document",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_document",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_document",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_document",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 5091
+        },
+        {
+          "tool": "get_window",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_window",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_templates",
+          "kind": "read",
+          "status": "pass",
+          "ms": 29585
+        },
+        {
+          "tool": "get_template",
+          "kind": "read",
+          "status": "pass",
+          "ms": 1907
+        },
+        {
+          "tool": "list_audio_clips",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_audio_clip",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_audio_clip",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_charts",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_chart",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_chart",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_groups",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_group",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_group",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_images",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_image",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_image",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_iwork_items",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_iwork_item",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_iwork_item",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_lines",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_line",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_line",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_movies",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_movie",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_movie",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_pages",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_page",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_page",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_sections",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_section",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_section",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_shapes",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_shape",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_shape",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_tables",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_table",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_table",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_table",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_table",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_text_items",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_text_item",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_text_item",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_placeholder_texts",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_placeholder_text",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_placeholder_text",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_cells",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_cell",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_cell",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_cell",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_cell",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_rows",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_row",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_row",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_row",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_row",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_columns",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_column",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_column",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_column",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_column",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_ranges",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_range",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_range",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_range",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_range",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_characters",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_character",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_character",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_paragraphs",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_paragraph",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_paragraph",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_words",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_word",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_word",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "clear",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "merge",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "sort",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "unmerge",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "set_password",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "remove_password",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "export",
+          "kind": "write",
+          "status": "untested"
+        }
+      ]
+    },
+    {
+      "app": "Safari",
+      "scriptable": true,
+      "classes": 3,
+      "tools": {
+        "read": 7,
+        "write": 10,
+        "destructive": 2
+      },
+      "results": [
+        {
+          "tool": "get_application",
+          "kind": "read",
+          "status": "pass",
+          "ms": 107
+        },
+        {
+          "tool": "list_documents",
+          "kind": "read",
+          "status": "pass",
+          "ms": 8748
+        },
+        {
+          "tool": "get_document",
+          "kind": "read",
+          "status": "pass",
+          "ms": 14182
+        },
+        {
+          "tool": "create_document",
+          "kind": "write",
+          "status": "fail",
+          "ms": 31868,
+          "error": "created, but raw osascript did not find it"
+        },
+        {
+          "tool": "update_document",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_document",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 3037
+        },
+        {
+          "tool": "get_window",
+          "kind": "read",
+          "status": "pass",
+          "ms": 2844
+        },
+        {
+          "tool": "update_window",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_tabs",
+          "kind": "read",
+          "status": "pass",
+          "ms": 507
+        },
+        {
+          "tool": "get_tab",
+          "kind": "read",
+          "status": "pass",
+          "ms": 853
+        },
+        {
+          "tool": "create_tab",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_tab",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_tab",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "add_reading_list_item",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "do_javascript",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "email_contents",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "search_the_web",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "show_bookmarks",
+          "kind": "write",
+          "status": "untested"
+        }
+      ]
+    },
+    {
+      "app": "Mail",
+      "scriptable": true,
+      "classes": 20,
+      "tools": {
+        "read": 41,
+        "write": 42,
+        "destructive": 22
+      },
+      "results": [
+        {
+          "tool": "get_application",
+          "kind": "read",
+          "status": "pass",
+          "ms": 75
+        },
+        {
+          "tool": "list_documents",
+          "kind": "read",
+          "status": "pass",
+          "ms": 251
+        },
+        {
+          "tool": "get_document",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_document",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 359
+        },
+        {
+          "tool": "get_window",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_window",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_accounts",
+          "kind": "read",
+          "status": "pass",
+          "ms": 230
+        },
+        {
+          "tool": "get_account",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_account",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_account",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_account",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_pop_accounts",
+          "kind": "read",
+          "status": "pass",
+          "ms": 291
+        },
+        {
+          "tool": "get_pop_account",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_pop_account",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_pop_account",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_pop_account",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_imap_accounts",
+          "kind": "read",
+          "status": "pass",
+          "ms": 381
+        },
+        {
+          "tool": "get_imap_account",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_imap_account",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_imap_account",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_imap_account",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_icloud_accounts",
+          "kind": "read",
+          "status": "pass",
+          "ms": 384
+        },
+        {
+          "tool": "get_icloud_account",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_icloud_account",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_icloud_account",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_icloud_account",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_smtp_servers",
+          "kind": "read",
+          "status": "pass",
+          "ms": 224
+        },
+        {
+          "tool": "get_smtp_server",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_smtp_server",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_smtp_server",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_smtp_server",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_outgoing_messages",
+          "kind": "read",
+          "status": "pass",
+          "ms": 101
+        },
+        {
+          "tool": "get_outgoing_message",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_outgoing_message",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_outgoing_message",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_outgoing_message",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_mailboxes",
+          "kind": "read",
+          "status": "pass",
+          "ms": 217
+        },
+        {
+          "tool": "get_mailbox",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_mailbox",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_mailbox",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_mailbox",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_message_viewers",
+          "kind": "read",
+          "status": "pass",
+          "ms": 151
+        },
+        {
+          "tool": "get_message_viewer",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_message_viewer",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_message_viewer",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_message_viewer",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_rules",
+          "kind": "read",
+          "status": "pass",
+          "ms": 566
+        },
+        {
+          "tool": "get_rule",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_rule",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_rule",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_rule",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_signatures",
+          "kind": "read",
+          "status": "pass",
+          "ms": 374
+        },
+        {
+          "tool": "get_signature",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_signature",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_signature",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_signature",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_bcc_recipients",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_bcc_recipient",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_bcc_recipient",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_bcc_recipient",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_bcc_recipient",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_cc_recipients",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_cc_recipient",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_cc_recipient",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_cc_recipient",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_cc_recipient",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_recipients",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_recipient",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_recipient",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_recipient",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_recipient",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_to_recipients",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_to_recipient",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_to_recipient",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_to_recipient",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_to_recipient",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_messages",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_message",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_message",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_message",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_message",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_rule_conditions",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_rule_condition",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_rule_condition",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_headers",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_header",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_header",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_header",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_header",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_mail_attachments",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "get_mail_attachment",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_mail_attachment",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "check_for_new_mail",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "extract_name_from",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "extract_address_from",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "forward",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "geturl",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "import_mail_mailbox",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "mailto",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "perform_mail_action_with_messages",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "redirect",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "reply",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "send",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "synchronize",
+          "kind": "write",
+          "status": "untested"
+        }
+      ],
+      "note": "read only by design here; the sweep reads no messages"
+    },
+    {
+      "app": "Photos",
+      "scriptable": true,
+      "classes": 4,
+      "tools": {
+        "read": 9,
+        "write": 14,
+        "destructive": 0
+      },
+      "results": [
+        {
+          "tool": "get_application",
+          "kind": "read",
+          "status": "pass",
+          "ms": 52
+        },
+        {
+          "tool": "list_containers",
+          "kind": "read",
+          "status": "pass",
+          "ms": 2680
+        },
+        {
+          "tool": "get_container",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_container",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_albums",
+          "kind": "read",
+          "status": "pass",
+          "ms": 216
+        },
+        {
+          "tool": "get_album",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_album",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_folders",
+          "kind": "read",
+          "status": "pass",
+          "ms": 189
+        },
+        {
+          "tool": "get_folder",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_folder",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_media_items",
+          "kind": "read",
+          "status": "fail",
+          "ms": 45011,
+          "error": "Photos did not answer within 45 s. It may be busy (syncing or reading its store); try again."
+        },
+        {
+          "tool": "get_media_item",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_media_item",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "export",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "add",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "start_slideshow",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "stop_slideshow",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "next_slide",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "previous_slide",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "pause_slideshow",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "resume_slideshow",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "spotlight",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "search",
+          "kind": "write",
+          "status": "untested"
+        }
+      ],
+      "note": "dictionary marks every element read only, so mcpify generates no create tools"
+    }
+  ]
+}
