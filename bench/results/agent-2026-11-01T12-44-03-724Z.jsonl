@@ -1,2 +1,3 @@
 {"task":"cal-move","app":"Calendar","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":4,"toolCalls":3,"toolErrors":1,"ms":66426,"costUsd":0.0148129}
 {"task":"cal-move","app":"Calendar","arm":"mcpify","rep":1,"ok":false,"collateral":false,"toolCalls":12,"toolErrors":3,"ms":480357,"error":"exit 143: "}
+{"task":"cal-location","app":"Calendar","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":7,"toolCalls":6,"toolErrors":1,"ms":138270,"costUsd":0.027654300000000007}

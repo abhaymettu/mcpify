@@ -75,3 +75,7 @@ When the workers are done:
 5. Run humanizer and `inmyvoice check -r readme` on the prose. Blind-judge the README with 2 Opus subagents.
 6. Run gitleaks, `gh repo edit --visibility public` (approved for this repo only), test `npx -y github:abhaymettu/mcpify tools Reminders` from a temp dir, paste the output here.
 7. Final report with `## Slowed by`, then settle the thread.
+
+## 07:00 fixes found by the agent suite
+
+The cal-move mcpify run failed: Calendar rejected setting start before end, and `list_calendars` gave no refs because `calendarIdentifier` cannot be read in bulk. Both are fixed in ebfa878. Runs before ebfa878 used the earlier code. After the workers finish, rerun the Calendar tasks (both arms) and report the numbers before and after the fix.
