@@ -5,7 +5,8 @@ export const jxaName = (s) => s.split(/\s+/).map((w, i) => (i === 0 ? w.toLowerC
 /** JXA class constructors: every word capitalised ("smart playlist" -> SmartPlaylist). */
 const ctorName = (s) => s.split(/\s+/).map((w) => w[0].toUpperCase() + w.slice(1)).join("");
 export const snake = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
-const TEXT = new Set(["text", "string", "Unicode text", "international text", "styled text"]);
+// "rich text" and "text.ctxt" (the Text Suite class, referenced by id) read and write as plain strings in JXA.
+const TEXT = new Set(["text", "string", "Unicode text", "international text", "styled text", "rich text", "text.ctxt"]);
 const NUMBER = new Set(["integer", "real", "number", "double integer", "small integer", "small real", "long integer", "extended real"]);
 const PATHLIKE = new Set(["file", "alias", "file specification", "file url"]);
 /** Properties that can be large; left out of list summaries (still read by get_*). */
@@ -262,7 +263,7 @@ export function adapterFromDictionary(appName, dict, opts = {}) {
                 description: `Create a ${appName} ${name}${nested.length ? ` inside a ${nested.join("/")}` : ""}. Writable properties: ${describeProps(dict, writable)}.`,
                 input: {
                     ...(nested.length ? { parent: containers.includes("application") ? z.string().optional().describe(`ref of the containing ${nested.join(" or ")} (omit for the app's default place)`) : z.string().describe(`ref of the containing ${nested.join(" or ")}`) } : {}),
-                    properties: z.object(propShape).describe("initial property values"),
+                    properties: z.strictObject(propShape).describe("initial property values"),
                 },
                 writes: true,
                 refArgs: ["parent", ...refProps],
@@ -290,7 +291,7 @@ export function adapterFromDictionary(appName, dict, opts = {}) {
                 add({
                     name: `update_${snake(name)}`,
                     description: `Change properties of a ${appName} ${name}. Writable: ${describeProps(dict, writable)}.`,
-                    input: { ref: z.string().describe(`ref of a ${name}`), properties: z.object(propShape).describe("properties to set") },
+                    input: { ref: z.string().describe(`ref of a ${name}`), properties: z.strictObject(propShape).describe("properties to set") },
                     writes: true,
                     refArgs: ["ref", ...refProps],
                     refClass: name,

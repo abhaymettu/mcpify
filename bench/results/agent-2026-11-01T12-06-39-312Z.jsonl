@@ -1,2 +1,3 @@
 {"task":"rem-count-open","app":"Reminders","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":3,"toolCalls":2,"toolErrors":0,"ms":24835,"costUsd":0.0312138}
 {"task":"rem-count-open","app":"Reminders","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":5031,"costUsd":0.005148}
+{"task":"rem-add-due","app":"Reminders","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":82048,"costUsd":0.009323600000000001}
