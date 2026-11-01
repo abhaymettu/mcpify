@@ -18,7 +18,25 @@ mcpify reads the dictionary and generates typed tools for every class in it, so 
 
 ## Results
 
-{{RESULTS}}
+**Coverage, 13 apps** (`npm run coverage`, full table in [bench/results/coverage.md](bench/results/coverage.md)). mcpify generated 206 read tools and 292 write tools from 98 classes:
+- Every read tool the live sweep reached passed, except one Photos call that timed out.
+- Create, update and delete round trips, each step checked with raw `osascript`, passed in 7 apps: Reminders, Notes, Calendar, Contacts, Music, Finder and TextEdit.
+- Keynote, Numbers and Pages timed out making a test document under load, so they are untested.
+- Mail is swept for structure only and reads no messages.
+
+**Agent suite: 31 tasks across 9 apps** (`npm run bench`). Claude Code (Sonnet) did each task twice: once with the generated server, once with only a Bash tool limited to `osascript`. Raw `osascript` reads graded each run. The two Keynote tasks were skipped on both arms, because Keynote never finished creating its test document. 29 tasks remained ([results](bench/results/agent.md)):
+
+| Arm | Success | Changes outside test data | Median tool calls | Median time |
+|---|---|---|---|---|
+| mcpify (generated tools) | 29/29 | 0 | 3 | 23.8 s |
+| raw osascript | 29/29 | 0 | 1 | 7.9 s |
+
+The first pass went 26/29 for mcpify ([first pass](bench/results/agent-first-pass.md)). The three failures were real generator bugs, all fixed and rerun:
+- Calendar rejected an update that set the start after the end.
+- Calendar's identifier cannot be read in bulk, so lists came back without refs.
+- Dates came back in UTC, and the agent read 18:15Z as local time.
+
+The honest summary: a strong model already writes good AppleScript. Typed tools do not make it more accurate on these tasks. They make it slower: three calls where one script would do, and about six times the API-equivalent cost. What they buy is control. The agent can read but not write unless you pass `--writes`. Writes stay inside the `--scope` you give, and each one shows a plan and needs a confirm. The osascript arm has none of that: its one tool can run any script, including `do shell script`.
 
 ## Quick start
 
@@ -93,7 +111,14 @@ More detail in [docs/prior-art.md](docs/prior-art.md).
 
 ## Limits
 
-{{LIMITS}}
+- **One machine, one rep.** macOS 26.5. The load average sat between 85 and 120 from other jobs the whole time, so the timings are slow and noisy. Each task ran once per arm, with one model (Sonnet).
+- **Latency.** Each tool call starts an `osascript` process. Under load a single Apple Event to Reminders or Calendar took up to two minutes.
+- **iWork untested.** Keynote, Numbers and Pages timed out creating documents by script on this machine.
+- **The dictionary is taken at its word.** Photos marks every element read only, so mcpify makes no create tools for it, even though Photos can make albums. Apps whose dictionaries are wrong get wrong tools.
+- **Refs by name break on rename.** Objects with no readable id (Safari documents, Finder items) are selected by name. Renaming one invalidates its ref.
+- **Permissions.** Every app needs its own Automation grant. Calendar, Contacts and Photos also need the calling app to hold their data permission.
+- **No dictionary, no server.** Apps without a dictionary (Calculator and many others) would need the Accessibility API, which mcpify does not use.
+- **Tool count.** Big dictionaries make many tools: System Events gets 132. `--depth` trims them.
 
 ## Reproduce
 

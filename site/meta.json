@@ -1,0 +1,14 @@
+{
+  "title": "mcpify",
+  "summary": "Any scriptable Mac app as an MCP server, generated from its AppleScript dictionary and checked against the real app, with read-only defaults and confirmed, scoped writes.",
+  "headline_numbers": [
+    { "label": "Apps covered by the live sweep", "value": "13 apps, 98 classes, 206 read and 292 write tools generated", "command": "npm run coverage" },
+    { "label": "Live write round trips (create, update, delete), checked with raw osascript", "value": "7 apps pass", "command": "npm run coverage" },
+    { "label": "Agent tasks passed with generated tools (Sonnet, test data only)", "value": "29/29, same as raw osascript", "command": "npm run bench && node bench/summarize.ts --latest bench/results/agent-*.jsonl" },
+    { "label": "Generator bugs the agent suite found (fixed)", "value": "3 (first pass 26/29)", "command": "node bench/summarize.ts bench/results/agent-*.jsonl" },
+    { "label": "Write-safety checks on the live app", "value": "6/6", "command": "node --test test/safety.e2e.test.ts" }
+  ],
+  "repo": "https://github.com/abhaymettu/mcpify",
+  "paper": null,
+  "hero_image": "demo/demo.gif"
+}
