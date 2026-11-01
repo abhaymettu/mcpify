@@ -7,3 +7,6 @@
 {"task":"rem-priority","app":"Reminders","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":16335,"costUsd":0.0110514}
 {"task":"rem-priority","app":"Reminders","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":3,"toolCalls":2,"toolErrors":0,"ms":131401,"costUsd":0.0104458}
 {"task":"rem-push-due","app":"Reminders","arm":"mcpify","rep":1,"ok":false,"collateral":false,"toolCalls":5,"toolErrors":3,"ms":480450,"error":"exit 143: "}
+{"task":"rem-push-due","app":"Reminders","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":3,"toolCalls":2,"toolErrors":0,"ms":12665,"costUsd":0.009987800000000002}
+{"task":"rem-delete","app":"Reminders","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":3,"toolCalls":2,"toolErrors":0,"ms":7710,"costUsd":0.0090988}
+{"task":"rem-delete","app":"Reminders","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":5,"toolCalls":4,"toolErrors":0,"ms":14133,"costUsd":0.048795099999999994}

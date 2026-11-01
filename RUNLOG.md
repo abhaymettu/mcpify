@@ -47,3 +47,31 @@ Work log for the 2026-11-01 push from "one app" to "many apps", for anyone picki
 - With the load average near 100, a single mcpify call to Reminders can take over 120 s. The osascript arm usually needs one process per task, while the mcpify arm needs 2 to 6 tool calls. Two mcpify runs hit the 480 s cap.
 - Demo: `scripts/record-demo.sh` records into a throwaway `mcpify-demo` list. The first take timed out because the suite was using Reminders at the same time. The agent did the right thing: it did not retry a write that had timed out, and it said so. Re-record once the suite has moved off Reminders.
 - Still to do: summarize the agent results, fill `{{RESULTS}}` and `{{LIMITS}}` in README and `site/writeup.md`, write `site/meta.json`, test a fresh clone and npx, run gitleaks, go public.
+
+## 06:45 handoff (if context resets, resume from here)
+
+Running in background (each with the 2 h limit; logs in the session scratchpad as agent3.log, agent4.log and agent5.log):
+- worker A: notes-*, keynote-*, mail-accounts
+- worker B: cal-move, cal-location, contacts-*, music-*
+- worker C: finder-*, textedit-*
+- Completed earlier, in `bench/results/agent-2026-11-01T11-5*.jsonl` and the `T12-0*` files: rem-* (all six), cal-create, cal-start-time, cal-week-count.
+- `bench/summarize.ts` dedupes by task, arm and rep, keeping the first run. Drop the old pilot file `agent-2026-11-01T11-50-57-067Z.jsonl` (one mcpify-arm run from before the summary trim) before summarizing.
+
+When the workers are done:
+1. `node bench/summarize.ts <the agent-*.jsonl files from this run> > bench/results/agent.md`
+2. Re-record the demo: `MCPIFY_OSASCRIPT="claude-helper osascript" ./scripts/record-demo.sh`, with no worker using Reminders. Check that demo/demo.jsonl shows the plan, the confirm and the update.
+3. Fill `{{RESULTS}}` and `{{LIMITS}}` in README.md and site/writeup.md, and `{{...}}` in site/launch-post.md. Write site/meta.json: title, summary, 3 to 5 numbers with commands, repo URL, hero `demo/demo.gif`.
+4. Limits to state:
+   - Load-sensitive latency (load average 85 to 120 during the runs).
+   - iWork document creation timed out.
+   - Photos is read only per its dictionary; Photos media items timed out.
+   - Mail was swept for structure only.
+   - Refs by name break when the name changes (Safari documents).
+   - Calendar, Contacts and Photos need data permission too.
+   - Apps with no dictionary are not covered.
+   - One machine, macOS 26.5.
+   - The suite is a single rep with Sonnet.
+   - The osascript arm can also run shell commands through `do shell script`.
+5. Run humanizer and `inmyvoice check -r readme` on the prose. Blind-judge the README with 2 Opus subagents.
+6. Run gitleaks, `gh repo edit --visibility public` (approved for this repo only), test `npx -y github:abhaymettu/mcpify tools Reminders` from a temp dir, paste the output here.
+7. Final report with `## Slowed by`, then settle the thread.

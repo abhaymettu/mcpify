@@ -16,7 +16,9 @@ interface Run {
 }
 
 const all = process.argv.slice(2).flatMap((f) => readFileSync(f, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l)));
-const runs: Run[] = all.filter((r) => !r.setup_failed);
+// A task relaunched after an interrupted worker can appear twice for one arm; the first completed run counts.
+const seen = new Set<string>();
+const runs: Run[] = all.filter((r) => !r.setup_failed && !seen.has(`${r.task}|${r.arm}|${r.rep}`) && seen.add(`${r.task}|${r.arm}|${r.rep}`));
 const skipped = all.length - runs.length;
 const arms = [...new Set(runs.map((r) => r.arm))];
 const median = (xs: number[]) => {
