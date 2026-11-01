@@ -1,5 +1,5 @@
 {
-  "when": "2026-11-01T11:49:00.654Z",
+  "when": "2026-11-01T12:21:23.869Z",
   "macos": "26.5.2",
   "apps": [
     {
@@ -16,13 +16,13 @@
           "tool": "get_application",
           "kind": "read",
           "status": "pass",
-          "ms": 567
+          "ms": 202
         },
         {
           "tool": "list_documents",
           "kind": "read",
           "status": "pass",
-          "ms": 10422
+          "ms": 342
         },
         {
           "tool": "get_document",
@@ -38,7 +38,7 @@
           "tool": "list_windows",
           "kind": "read",
           "status": "pass",
-          "ms": 678
+          "ms": 255
         },
         {
           "tool": "get_window",
@@ -54,7 +54,7 @@
           "tool": "list_accounts",
           "kind": "read",
           "status": "pass",
-          "ms": 2021
+          "ms": 2510
         },
         {
           "tool": "get_account",
@@ -65,13 +65,13 @@
           "tool": "list_lists",
           "kind": "read",
           "status": "pass",
-          "ms": 2470
+          "ms": 3498
         },
         {
           "tool": "get_list",
           "kind": "read",
           "status": "pass",
-          "ms": 2256
+          "ms": 681
         },
         {
           "tool": "create_list",
@@ -92,38 +92,39 @@
           "tool": "list_reminders",
           "kind": "read",
           "status": "pass",
-          "ms": 44633
+          "ms": 3348
         },
         {
           "tool": "get_reminder",
           "kind": "read",
           "status": "pass",
-          "ms": 403
+          "ms": 23310
         },
         {
           "tool": "create_reminder",
           "kind": "write",
           "status": "pass",
-          "ms": 1203
+          "ms": 23782
         },
         {
           "tool": "update_reminder",
           "kind": "write",
           "status": "pass",
-          "ms": 619
+          "ms": 76938
         },
         {
           "tool": "delete_reminder",
           "kind": "destructive",
           "status": "pass",
-          "ms": 938
+          "ms": 85300
         },
         {
           "tool": "show",
           "kind": "write",
           "status": "untested"
         }
-      ]
+      ],
+      "when": "2026-11-01T12:18:25.329Z"
     },
     {
       "app": "Notes",
@@ -139,13 +140,13 @@
           "tool": "get_application",
           "kind": "read",
           "status": "pass",
-          "ms": 42
+          "ms": 295
         },
         {
           "tool": "list_documents",
           "kind": "read",
           "status": "pass",
-          "ms": 119
+          "ms": 408
         },
         {
           "tool": "get_document",
@@ -161,7 +162,7 @@
           "tool": "list_windows",
           "kind": "read",
           "status": "pass",
-          "ms": 359
+          "ms": 648
         },
         {
           "tool": "get_window",
@@ -177,7 +178,7 @@
           "tool": "list_accounts",
           "kind": "read",
           "status": "pass",
-          "ms": 466
+          "ms": 586
         },
         {
           "tool": "get_account",
@@ -203,13 +204,13 @@
           "tool": "list_folders",
           "kind": "read",
           "status": "pass",
-          "ms": 190
+          "ms": 2459
         },
         {
           "tool": "get_folder",
           "kind": "read",
           "status": "pass",
-          "ms": 145
+          "ms": 5103
         },
         {
           "tool": "create_folder",
@@ -230,37 +231,37 @@
           "tool": "list_notes",
           "kind": "read",
           "status": "pass",
-          "ms": 177
+          "ms": 5012
         },
         {
           "tool": "get_note",
           "kind": "read",
           "status": "pass",
-          "ms": 516
+          "ms": 189
         },
         {
           "tool": "create_note",
           "kind": "write",
           "status": "pass",
-          "ms": 2383
+          "ms": 34456
         },
         {
           "tool": "update_note",
           "kind": "write",
           "status": "pass",
-          "ms": 459
+          "ms": 433
         },
         {
           "tool": "delete_note",
           "kind": "destructive",
           "status": "pass",
-          "ms": 1653
+          "ms": 711
         },
         {
           "tool": "list_attachments",
           "kind": "read",
           "status": "pass",
-          "ms": 6743
+          "ms": 16690
         },
         {
           "tool": "get_attachment",
@@ -282,7 +283,8 @@
           "kind": "write",
           "status": "untested"
         }
-      ]
+      ],
+      "when": "2026-11-01T12:18:25.329Z"
     },
     {
       "app": "Calendar",
@@ -298,13 +300,13 @@
           "tool": "get_application",
           "kind": "read",
           "status": "pass",
-          "ms": 49
+          "ms": 95
         },
         {
           "tool": "list_documents",
           "kind": "read",
           "status": "pass",
-          "ms": 115
+          "ms": 215
         },
         {
           "tool": "get_document",
@@ -320,7 +322,7 @@
           "tool": "list_windows",
           "kind": "read",
           "status": "pass",
-          "ms": 158
+          "ms": 444
         },
         {
           "tool": "get_window",
@@ -336,13 +338,13 @@
           "tool": "list_calendars",
           "kind": "read",
           "status": "pass",
-          "ms": 516
+          "ms": 1728
         },
         {
           "tool": "get_calendar",
           "kind": "read",
           "status": "pass",
-          "ms": 3387
+          "ms": 437
         },
         {
           "tool": "create_calendar",
@@ -363,31 +365,31 @@
           "tool": "list_events",
           "kind": "read",
           "status": "pass",
-          "ms": 2348
+          "ms": 388
         },
         {
           "tool": "get_event",
           "kind": "read",
           "status": "pass",
-          "ms": 1061
+          "ms": 3955
         },
         {
           "tool": "create_event",
           "kind": "write",
           "status": "pass",
-          "ms": 1636
+          "ms": 5470
         },
         {
           "tool": "update_event",
           "kind": "write",
           "status": "pass",
-          "ms": 1038
+          "ms": 3342
         },
         {
           "tool": "delete_event",
           "kind": "destructive",
           "status": "pass",
-          "ms": 775
+          "ms": 10514
         },
         {
           "tool": "list_attendees",
@@ -484,7 +486,8 @@
           "kind": "write",
           "status": "untested"
         }
-      ]
+      ],
+      "when": "2026-11-01T12:18:25.329Z"
     },
     {
       "app": "Contacts",
@@ -500,13 +503,13 @@
           "tool": "get_application",
           "kind": "read",
           "status": "pass",
-          "ms": 569
+          "ms": 101
         },
         {
           "tool": "list_documents",
           "kind": "read",
           "status": "pass",
-          "ms": 2120
+          "ms": 2293
         },
         {
           "tool": "get_document",
@@ -522,7 +525,7 @@
           "tool": "list_windows",
           "kind": "read",
           "status": "pass",
-          "ms": 4278
+          "ms": 1161
         },
         {
           "tool": "get_window",
@@ -538,13 +541,13 @@
           "tool": "list_groups",
           "kind": "read",
           "status": "pass",
-          "ms": 11142
+          "ms": 382
         },
         {
           "tool": "get_group",
           "kind": "read",
           "status": "pass",
-          "ms": 19159
+          "ms": 420
         },
         {
           "tool": "create_group",
@@ -565,29 +568,31 @@
           "tool": "list_people",
           "kind": "read",
           "status": "pass",
-          "ms": 33126
+          "ms": 476
         },
         {
           "tool": "get_person",
           "kind": "read",
-          "status": "untested"
+          "status": "pass",
+          "ms": 1538
         },
         {
           "tool": "create_person",
           "kind": "write",
-          "status": "fail",
-          "ms": 139,
-          "error": "refused: create_person has no target inside the allowed scope (groups[name=\"…\"])"
+          "status": "pass",
+          "ms": 7876
         },
         {
           "tool": "update_person",
           "kind": "write",
-          "status": "untested"
+          "status": "pass",
+          "ms": 1374
         },
         {
           "tool": "delete_person",
           "kind": "destructive",
-          "status": "untested"
+          "status": "pass",
+          "ms": 1234
         },
         {
           "tool": "list_urls",
@@ -819,7 +824,8 @@
           "kind": "write",
           "status": "untested"
         }
-      ]
+      ],
+      "when": "2026-11-01T12:18:25.329Z"
     },
     {
       "app": "Music",
@@ -835,19 +841,19 @@
           "tool": "get_application",
           "kind": "read",
           "status": "pass",
-          "ms": 671
+          "ms": 707
         },
         {
           "tool": "list_airplay_devices",
           "kind": "read",
           "status": "pass",
-          "ms": 5224
+          "ms": 3627
         },
         {
           "tool": "get_airplay_device",
           "kind": "read",
           "status": "pass",
-          "ms": 1416
+          "ms": 2240
         },
         {
           "tool": "create_airplay_device",
@@ -868,7 +874,7 @@
           "tool": "list_browser_windows",
           "kind": "read",
           "status": "pass",
-          "ms": 4300
+          "ms": 454
         },
         {
           "tool": "get_browser_window",
@@ -884,13 +890,13 @@
           "tool": "list_encoders",
           "kind": "read",
           "status": "pass",
-          "ms": 3341
+          "ms": 2231
         },
         {
           "tool": "get_encoder",
           "kind": "read",
           "status": "pass",
-          "ms": 2131
+          "ms": 3853
         },
         {
           "tool": "create_encoder",
@@ -911,13 +917,13 @@
           "tool": "list_eq_presets",
           "kind": "read",
           "status": "pass",
-          "ms": 1960
+          "ms": 3064
         },
         {
           "tool": "get_eq_preset",
           "kind": "read",
           "status": "pass",
-          "ms": 1760
+          "ms": 3561
         },
         {
           "tool": "create_eq_preset",
@@ -938,7 +944,7 @@
           "tool": "list_eq_windows",
           "kind": "read",
           "status": "pass",
-          "ms": 9612
+          "ms": 824
         },
         {
           "tool": "get_eq_window",
@@ -954,7 +960,7 @@
           "tool": "list_miniplayer_windows",
           "kind": "read",
           "status": "pass",
-          "ms": 1027
+          "ms": 981
         },
         {
           "tool": "get_miniplayer_window",
@@ -970,13 +976,13 @@
           "tool": "list_playlists",
           "kind": "read",
           "status": "pass",
-          "ms": 660
+          "ms": 3392
         },
         {
           "tool": "get_playlist",
           "kind": "read",
           "status": "pass",
-          "ms": 517
+          "ms": 1150
         },
         {
           "tool": "create_playlist",
@@ -997,7 +1003,7 @@
           "tool": "list_playlist_windows",
           "kind": "read",
           "status": "pass",
-          "ms": 7450
+          "ms": 3983
         },
         {
           "tool": "get_playlist_window",
@@ -1013,13 +1019,13 @@
           "tool": "list_sources",
           "kind": "read",
           "status": "pass",
-          "ms": 1573
+          "ms": 3199
         },
         {
           "tool": "get_source",
           "kind": "read",
           "status": "pass",
-          "ms": 2878
+          "ms": 2406
         },
         {
           "tool": "create_source",
@@ -1040,13 +1046,13 @@
           "tool": "list_tracks",
           "kind": "read",
           "status": "pass",
-          "ms": 652
+          "ms": 2143
         },
         {
           "tool": "get_track",
           "kind": "read",
           "status": "pass",
-          "ms": 3333
+          "ms": 1575
         },
         {
           "tool": "create_track",
@@ -1067,7 +1073,7 @@
           "tool": "list_video_windows",
           "kind": "read",
           "status": "pass",
-          "ms": 342
+          "ms": 6465
         },
         {
           "tool": "get_video_window",
@@ -1083,13 +1089,13 @@
           "tool": "list_visuals",
           "kind": "read",
           "status": "pass",
-          "ms": 2878
+          "ms": 3216
         },
         {
           "tool": "get_visual",
           "kind": "read",
           "status": "pass",
-          "ms": 511
+          "ms": 351
         },
         {
           "tool": "create_visual",
@@ -1110,7 +1116,7 @@
           "tool": "list_windows",
           "kind": "read",
           "status": "pass",
-          "ms": 1091
+          "ms": 693
         },
         {
           "tool": "get_window",
@@ -1126,7 +1132,7 @@
           "tool": "list_artworks",
           "kind": "read",
           "status": "pass",
-          "ms": 1871
+          "ms": 2472
         },
         {
           "tool": "get_artwork",
@@ -1152,7 +1158,7 @@
           "tool": "list_audio_cd_playlists",
           "kind": "read",
           "status": "pass",
-          "ms": 697
+          "ms": 1493
         },
         {
           "tool": "get_audio_cd_playlist",
@@ -1178,13 +1184,13 @@
           "tool": "list_library_playlists",
           "kind": "read",
           "status": "pass",
-          "ms": 3761
+          "ms": 2429
         },
         {
           "tool": "get_library_playlist",
           "kind": "read",
           "status": "pass",
-          "ms": 3800
+          "ms": 3404
         },
         {
           "tool": "create_library_playlist",
@@ -1205,7 +1211,7 @@
           "tool": "list_radio_tuner_playlists",
           "kind": "read",
           "status": "pass",
-          "ms": 527
+          "ms": 913
         },
         {
           "tool": "get_radio_tuner_playlist",
@@ -1231,13 +1237,13 @@
           "tool": "list_subscription_playlists",
           "kind": "read",
           "status": "pass",
-          "ms": 834
+          "ms": 880
         },
         {
           "tool": "get_subscription_playlist",
           "kind": "read",
           "status": "pass",
-          "ms": 1321
+          "ms": 455
         },
         {
           "tool": "create_subscription_playlist",
@@ -1258,30 +1264,31 @@
           "tool": "list_user_playlists",
           "kind": "read",
           "status": "pass",
-          "ms": 1666
+          "ms": 563
         },
         {
           "tool": "get_user_playlist",
           "kind": "read",
           "status": "pass",
-          "ms": 313
+          "ms": 500
         },
         {
           "tool": "create_user_playlist",
           "kind": "write",
-          "status": "fail",
-          "ms": 2,
-          "error": "MCP error -32602: Input validation error: Invalid arguments for tool create_user_playlist: Invalid input: expected string, received undefined at parent"
+          "status": "pass",
+          "ms": 569
         },
         {
           "tool": "update_user_playlist",
           "kind": "write",
-          "status": "untested"
+          "status": "pass",
+          "ms": 826
         },
         {
           "tool": "delete_user_playlist",
           "kind": "destructive",
-          "status": "untested"
+          "status": "pass",
+          "ms": 1365
         },
         {
           "tool": "list_audio_cd_tracks",
@@ -1312,13 +1319,13 @@
           "tool": "list_file_tracks",
           "kind": "read",
           "status": "pass",
-          "ms": 413
+          "ms": 888
         },
         {
           "tool": "get_file_track",
           "kind": "read",
           "status": "pass",
-          "ms": 5678
+          "ms": 3477
         },
         {
           "tool": "create_file_track",
@@ -1339,13 +1346,13 @@
           "tool": "list_url_tracks",
           "kind": "read",
           "status": "pass",
-          "ms": 257
+          "ms": 549
         },
         {
           "tool": "get_url_track",
           "kind": "read",
           "status": "pass",
-          "ms": 881
+          "ms": 1327
         },
         {
           "tool": "create_url_track",
@@ -1366,13 +1373,13 @@
           "tool": "list_shared_tracks",
           "kind": "read",
           "status": "pass",
-          "ms": 2283
+          "ms": 1177
         },
         {
           "tool": "get_shared_track",
           "kind": "read",
           "status": "pass",
-          "ms": 462
+          "ms": 1467
         },
         {
           "tool": "create_shared_track",
@@ -1474,19 +1481,422 @@
           "kind": "write",
           "status": "untested"
         }
-      ]
+      ],
+      "when": "2026-11-01T12:21:23.869Z"
     },
     {
       "app": "Finder",
-      "scriptable": false,
-      "classes": 0,
+      "scriptable": true,
+      "classes": 14,
       "tools": {
-        "read": 0,
-        "write": 0,
-        "destructive": 0
+        "read": 29,
+        "write": 29,
+        "destructive": 17
       },
-      "results": [],
-      "note": "Command failed: claude-helper osascript -l JavaScript -e function run(argv){const app=Application(\"…\");const args=JSON.parse(argv[0]);const r=((app) => { const "
+      "results": [
+        {
+          "tool": "get_application",
+          "kind": "read",
+          "status": "pass",
+          "ms": 85
+        },
+        {
+          "tool": "list_items",
+          "kind": "read",
+          "status": "pass",
+          "ms": 277
+        },
+        {
+          "tool": "get_item",
+          "kind": "read",
+          "status": "pass",
+          "ms": 234
+        },
+        {
+          "tool": "create_item",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_item",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_item",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_containers",
+          "kind": "read",
+          "status": "pass",
+          "ms": 210
+        },
+        {
+          "tool": "get_container",
+          "kind": "read",
+          "status": "pass",
+          "ms": 296
+        },
+        {
+          "tool": "create_container",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_container",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_container",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_disks",
+          "kind": "read",
+          "status": "pass",
+          "ms": 241
+        },
+        {
+          "tool": "get_disk",
+          "kind": "read",
+          "status": "pass",
+          "ms": 265
+        },
+        {
+          "tool": "create_disk",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_disk",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_disk",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_folders",
+          "kind": "read",
+          "status": "pass",
+          "ms": 278
+        },
+        {
+          "tool": "get_folder",
+          "kind": "read",
+          "status": "pass",
+          "ms": 525
+        },
+        {
+          "tool": "create_folder",
+          "kind": "write",
+          "status": "pass",
+          "ms": 1075
+        },
+        {
+          "tool": "update_folder",
+          "kind": "write",
+          "status": "pass",
+          "ms": 543
+        },
+        {
+          "tool": "delete_folder",
+          "kind": "destructive",
+          "status": "pass",
+          "ms": 790
+        },
+        {
+          "tool": "list_files",
+          "kind": "read",
+          "status": "pass",
+          "ms": 282
+        },
+        {
+          "tool": "get_file",
+          "kind": "read",
+          "status": "pass",
+          "ms": 242
+        },
+        {
+          "tool": "create_file",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_file",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_file",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_alias_files",
+          "kind": "read",
+          "status": "pass",
+          "ms": 181
+        },
+        {
+          "tool": "get_alias_file",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_alias_file",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_alias_file",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_alias_file",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_application_files",
+          "kind": "read",
+          "status": "pass",
+          "ms": 253
+        },
+        {
+          "tool": "get_application_file",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_application_file",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_application_file",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_application_file",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_document_files",
+          "kind": "read",
+          "status": "pass",
+          "ms": 229
+        },
+        {
+          "tool": "get_document_file",
+          "kind": "read",
+          "status": "pass",
+          "ms": 243
+        },
+        {
+          "tool": "create_document_file",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_document_file",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_document_file",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_internet_location_files",
+          "kind": "read",
+          "status": "pass",
+          "ms": 165
+        },
+        {
+          "tool": "get_internet_location_file",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_internet_location_file",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_internet_location_file",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_internet_location_file",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_clippings",
+          "kind": "read",
+          "status": "pass",
+          "ms": 180
+        },
+        {
+          "tool": "get_clipping",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_clipping",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_clipping",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_clipping",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_packages",
+          "kind": "read",
+          "status": "pass",
+          "ms": 396
+        },
+        {
+          "tool": "get_package",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "create_package",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update_package",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "delete_package",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "list_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 256
+        },
+        {
+          "tool": "get_window",
+          "kind": "read",
+          "status": "pass",
+          "ms": 200
+        },
+        {
+          "tool": "update_window",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_finder_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 181
+        },
+        {
+          "tool": "get_finder_window",
+          "kind": "read",
+          "status": "pass",
+          "ms": 216
+        },
+        {
+          "tool": "update_finder_window",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_clipping_windows",
+          "kind": "read",
+          "status": "pass",
+          "ms": 239
+        },
+        {
+          "tool": "get_clipping_window",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_clipping_window",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "copy",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "clean_up",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "eject",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "empty",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "erase",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "reveal",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "update",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "restart",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "shut_down",
+          "kind": "destructive",
+          "status": "untested"
+        },
+        {
+          "tool": "sleep",
+          "kind": "destructive",
+          "status": "untested"
+        }
+      ],
+      "when": "2026-11-01T12:21:23.869Z"
     },
     {
       "app": "TextEdit",
@@ -1502,54 +1912,57 @@
           "tool": "get_application",
           "kind": "read",
           "status": "pass",
-          "ms": 86
+          "ms": 190
         },
         {
           "tool": "list_documents",
           "kind": "read",
           "status": "pass",
-          "ms": 1428
+          "ms": 318
         },
         {
           "tool": "get_document",
           "kind": "read",
-          "status": "untested"
+          "status": "pass",
+          "ms": 303
         },
         {
           "tool": "create_document",
           "kind": "write",
-          "status": "fail",
-          "ms": 2688,
-          "error": "created, but raw osascript did not find it"
+          "status": "pass",
+          "ms": 643
         },
         {
           "tool": "update_document",
           "kind": "write",
-          "status": "untested"
+          "status": "pass",
+          "ms": 673
         },
         {
           "tool": "delete_document",
           "kind": "destructive",
-          "status": "untested"
+          "status": "pass",
+          "ms": 1054
         },
         {
           "tool": "list_windows",
           "kind": "read",
           "status": "pass",
-          "ms": 349
+          "ms": 497
         },
         {
           "tool": "get_window",
           "kind": "read",
           "status": "pass",
-          "ms": 335
+          "ms": 325
         },
         {
           "tool": "update_window",
           "kind": "write",
           "status": "untested"
         }
-      ]
+      ],
+      "when": "2026-11-01T12:21:23.869Z"
     },
     {
       "app": "Keynote",
@@ -1561,888 +1974,34 @@
         "destructive": 0
       },
       "results": [],
-      "note": "spawnSync claude-helper ETIMEDOUT"
+      "note": "Command failed: claude-helper osascript -l JavaScript -e function run(argv){const app=Application(\"…\");const args=JSON.parse(argv[0]);const r=((app) => { const ",
+      "when": "2026-11-01T12:18:25.329Z"
     },
     {
       "app": "Numbers",
-      "scriptable": true,
-      "classes": 18,
+      "scriptable": false,
+      "classes": 0,
       "tools": {
-        "read": 37,
-        "write": 34,
-        "destructive": 10
+        "read": 0,
+        "write": 0,
+        "destructive": 0
       },
-      "results": [
-        {
-          "tool": "get_application",
-          "kind": "read",
-          "status": "pass",
-          "ms": 738
-        },
-        {
-          "tool": "list_documents",
-          "kind": "read",
-          "status": "fail",
-          "ms": 45091,
-          "error": "Numbers did not answer within 45 s. It may be busy (syncing or reading its store); try again."
-        },
-        {
-          "tool": "get_document",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_document",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "update_document",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "delete_document",
-          "kind": "destructive",
-          "status": "untested"
-        },
-        {
-          "tool": "list_windows",
-          "kind": "read",
-          "status": "pass",
-          "ms": 5401
-        },
-        {
-          "tool": "get_window",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "update_window",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_templates",
-          "kind": "read",
-          "status": "pass",
-          "ms": 21507
-        },
-        {
-          "tool": "get_template",
-          "kind": "read",
-          "status": "pass",
-          "ms": 1313
-        },
-        {
-          "tool": "list_sheets",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_sheet",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_sheet",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "update_sheet",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "delete_sheet",
-          "kind": "destructive",
-          "status": "untested"
-        },
-        {
-          "tool": "list_audio_clips",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_audio_clip",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_audio_clip",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_charts",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_chart",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_chart",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_images",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_image",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_image",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_iwork_items",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_iwork_item",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_iwork_item",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_groups",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_group",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_group",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_lines",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_line",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_line",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_movies",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_movie",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_movie",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_shapes",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_shape",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_shape",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_tables",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_table",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_table",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "update_table",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "delete_table",
-          "kind": "destructive",
-          "status": "untested"
-        },
-        {
-          "tool": "list_text_items",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_text_item",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_text_item",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_cells",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_cell",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_cell",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "update_cell",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "delete_cell",
-          "kind": "destructive",
-          "status": "untested"
-        },
-        {
-          "tool": "list_rows",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_row",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_row",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "update_row",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "delete_row",
-          "kind": "destructive",
-          "status": "untested"
-        },
-        {
-          "tool": "list_columns",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_column",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_column",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "update_column",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "delete_column",
-          "kind": "destructive",
-          "status": "untested"
-        },
-        {
-          "tool": "list_ranges",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_range",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_range",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "update_range",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "delete_range",
-          "kind": "destructive",
-          "status": "untested"
-        },
-        {
-          "tool": "clear",
-          "kind": "destructive",
-          "status": "untested"
-        },
-        {
-          "tool": "merge",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "sort",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "unmerge",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "set_password",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "remove_password",
-          "kind": "destructive",
-          "status": "untested"
-        },
-        {
-          "tool": "transpose",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "export",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "add_column_after",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "add_column_before",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "add_row_above",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "add_row_below",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "remove",
-          "kind": "destructive",
-          "status": "untested"
-        }
-      ]
+      "results": [],
+      "note": "Command failed: claude-helper osascript -l JavaScript -e function run(argv){const app=Application(\"…\");const args=JSON.parse(argv[0]);const r=((app) => { const ",
+      "when": "2026-11-01T12:18:25.329Z"
     },
     {
       "app": "Pages",
-      "scriptable": true,
-      "classes": 23,
+      "scriptable": false,
+      "classes": 0,
       "tools": {
-        "read": 47,
-        "write": 33,
-        "destructive": 8
+        "read": 0,
+        "write": 0,
+        "destructive": 0
       },
-      "results": [
-        {
-          "tool": "get_application",
-          "kind": "read",
-          "status": "pass",
-          "ms": 138
-        },
-        {
-          "tool": "list_documents",
-          "kind": "read",
-          "status": "fail",
-          "ms": 45017,
-          "error": "Pages did not answer within 45 s. It may be busy (syncing or reading its store); try again."
-        },
-        {
-          "tool": "get_document",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_document",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "update_document",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "delete_document",
-          "kind": "destructive",
-          "status": "untested"
-        },
-        {
-          "tool": "list_windows",
-          "kind": "read",
-          "status": "pass",
-          "ms": 5091
-        },
-        {
-          "tool": "get_window",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "update_window",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_templates",
-          "kind": "read",
-          "status": "pass",
-          "ms": 29585
-        },
-        {
-          "tool": "get_template",
-          "kind": "read",
-          "status": "pass",
-          "ms": 1907
-        },
-        {
-          "tool": "list_audio_clips",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_audio_clip",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_audio_clip",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_charts",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_chart",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_chart",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_groups",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_group",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_group",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_images",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_image",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_image",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_iwork_items",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_iwork_item",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_iwork_item",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_lines",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_line",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_line",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_movies",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_movie",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_movie",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_pages",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_page",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_page",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_sections",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_section",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_section",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_shapes",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_shape",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_shape",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_tables",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_table",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_table",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "update_table",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "delete_table",
-          "kind": "destructive",
-          "status": "untested"
-        },
-        {
-          "tool": "list_text_items",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_text_item",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_text_item",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_placeholder_texts",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_placeholder_text",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_placeholder_text",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_cells",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_cell",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_cell",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "update_cell",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "delete_cell",
-          "kind": "destructive",
-          "status": "untested"
-        },
-        {
-          "tool": "list_rows",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_row",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_row",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "update_row",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "delete_row",
-          "kind": "destructive",
-          "status": "untested"
-        },
-        {
-          "tool": "list_columns",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_column",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_column",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "update_column",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "delete_column",
-          "kind": "destructive",
-          "status": "untested"
-        },
-        {
-          "tool": "list_ranges",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_range",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_range",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "update_range",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "delete_range",
-          "kind": "destructive",
-          "status": "untested"
-        },
-        {
-          "tool": "list_characters",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_character",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_character",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_paragraphs",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_paragraph",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_paragraph",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_words",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "get_word",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "create_word",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "clear",
-          "kind": "destructive",
-          "status": "untested"
-        },
-        {
-          "tool": "merge",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "sort",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "unmerge",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "set_password",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "remove_password",
-          "kind": "destructive",
-          "status": "untested"
-        },
-        {
-          "tool": "export",
-          "kind": "write",
-          "status": "untested"
-        }
-      ]
+      "results": [],
+      "note": "Command failed: claude-helper osascript -l JavaScript -e function run(argv){const app=Application(\"…\");const args=JSON.parse(argv[0]);const r=((app) => { const ",
+      "when": "2026-11-01T12:18:25.329Z"
     },
     {
       "app": "Safari",
@@ -2458,48 +2017,51 @@
           "tool": "get_application",
           "kind": "read",
           "status": "pass",
-          "ms": 107
+          "ms": 311
         },
         {
           "tool": "list_documents",
           "kind": "read",
           "status": "pass",
-          "ms": 8748
+          "ms": 5438
         },
         {
           "tool": "get_document",
           "kind": "read",
           "status": "pass",
-          "ms": 14182
+          "ms": 15663
         },
         {
           "tool": "create_document",
           "kind": "write",
-          "status": "fail",
-          "ms": 31868,
-          "error": "created, but raw osascript did not find it"
+          "status": "pass",
+          "ms": 24176
         },
         {
           "tool": "update_document",
           "kind": "write",
-          "status": "untested"
+          "status": "fail",
+          "ms": 1410,
+          "error": "Can't get object."
         },
         {
           "tool": "delete_document",
           "kind": "destructive",
-          "status": "untested"
+          "status": "fail",
+          "ms": 1315,
+          "error": "nothing at documents[name=\"…\"]"
         },
         {
           "tool": "list_windows",
           "kind": "read",
           "status": "pass",
-          "ms": 3037
+          "ms": 2803
         },
         {
           "tool": "get_window",
           "kind": "read",
           "status": "pass",
-          "ms": 2844
+          "ms": 574
         },
         {
           "tool": "update_window",
@@ -2510,13 +2072,13 @@
           "tool": "list_tabs",
           "kind": "read",
           "status": "pass",
-          "ms": 507
+          "ms": 726
         },
         {
           "tool": "get_tab",
           "kind": "read",
           "status": "pass",
-          "ms": 853
+          "ms": 2459
         },
         {
           "tool": "create_tab",
@@ -2558,7 +2120,8 @@
           "kind": "write",
           "status": "untested"
         }
-      ]
+      ],
+      "when": "2026-11-01T12:18:25.329Z"
     },
     {
       "app": "Mail",
@@ -2574,13 +2137,13 @@
           "tool": "get_application",
           "kind": "read",
           "status": "pass",
-          "ms": 75
+          "ms": 160
         },
         {
           "tool": "list_documents",
           "kind": "read",
           "status": "pass",
-          "ms": 251
+          "ms": 329
         },
         {
           "tool": "get_document",
@@ -2596,7 +2159,7 @@
           "tool": "list_windows",
           "kind": "read",
           "status": "pass",
-          "ms": 359
+          "ms": 580
         },
         {
           "tool": "get_window",
@@ -2612,7 +2175,7 @@
           "tool": "list_accounts",
           "kind": "read",
           "status": "pass",
-          "ms": 230
+          "ms": 584
         },
         {
           "tool": "get_account",
@@ -2638,7 +2201,7 @@
           "tool": "list_pop_accounts",
           "kind": "read",
           "status": "pass",
-          "ms": 291
+          "ms": 400
         },
         {
           "tool": "get_pop_account",
@@ -2664,7 +2227,7 @@
           "tool": "list_imap_accounts",
           "kind": "read",
           "status": "pass",
-          "ms": 381
+          "ms": 310
         },
         {
           "tool": "get_imap_account",
@@ -2690,7 +2253,7 @@
           "tool": "list_icloud_accounts",
           "kind": "read",
           "status": "pass",
-          "ms": 384
+          "ms": 226
         },
         {
           "tool": "get_icloud_account",
@@ -2716,7 +2279,7 @@
           "tool": "list_smtp_servers",
           "kind": "read",
           "status": "pass",
-          "ms": 224
+          "ms": 272
         },
         {
           "tool": "get_smtp_server",
@@ -2742,7 +2305,7 @@
           "tool": "list_outgoing_messages",
           "kind": "read",
           "status": "pass",
-          "ms": 101
+          "ms": 390
         },
         {
           "tool": "get_outgoing_message",
@@ -2768,7 +2331,7 @@
           "tool": "list_mailboxes",
           "kind": "read",
           "status": "pass",
-          "ms": 217
+          "ms": 696
         },
         {
           "tool": "get_mailbox",
@@ -2794,7 +2357,7 @@
           "tool": "list_message_viewers",
           "kind": "read",
           "status": "pass",
-          "ms": 151
+          "ms": 247
         },
         {
           "tool": "get_message_viewer",
@@ -2820,7 +2383,7 @@
           "tool": "list_rules",
           "kind": "read",
           "status": "pass",
-          "ms": 566
+          "ms": 186
         },
         {
           "tool": "get_rule",
@@ -2846,7 +2409,7 @@
           "tool": "list_signatures",
           "kind": "read",
           "status": "pass",
-          "ms": 374
+          "ms": 199
         },
         {
           "tool": "get_signature",
@@ -3109,7 +2672,8 @@
           "status": "untested"
         }
       ],
-      "note": "read only by design here; the sweep reads no messages"
+      "note": "read only by design here; the sweep reads no messages",
+      "when": "2026-11-01T12:18:25.329Z"
     },
     {
       "app": "Photos",
@@ -3125,13 +2689,13 @@
           "tool": "get_application",
           "kind": "read",
           "status": "pass",
-          "ms": 52
+          "ms": 166
         },
         {
           "tool": "list_containers",
           "kind": "read",
           "status": "pass",
-          "ms": 2680
+          "ms": 4738
         },
         {
           "tool": "get_container",
@@ -3147,7 +2711,7 @@
           "tool": "list_albums",
           "kind": "read",
           "status": "pass",
-          "ms": 216
+          "ms": 1378
         },
         {
           "tool": "get_album",
@@ -3163,7 +2727,7 @@
           "tool": "list_folders",
           "kind": "read",
           "status": "pass",
-          "ms": 189
+          "ms": 638
         },
         {
           "tool": "get_folder",
@@ -3179,8 +2743,8 @@
           "tool": "list_media_items",
           "kind": "read",
           "status": "fail",
-          "ms": 45011,
-          "error": "Photos did not answer within 45 s. It may be busy (syncing or reading its store); try again."
+          "ms": 120017,
+          "error": "Photos did not answer within 120 s. It may be busy (syncing or reading its store); try again."
         },
         {
           "tool": "get_media_item",
@@ -3243,7 +2807,8 @@
           "status": "untested"
         }
       ],
-      "note": "dictionary marks every element read only, so mcpify generates no create tools"
+      "note": "dictionary marks every element read only, so mcpify generates no create tools",
+      "when": "2026-11-01T12:18:25.329Z"
     }
   ]
 }

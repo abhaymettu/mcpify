@@ -1,4 +1,4 @@
-const SEG = /^([A-Za-z][A-Za-z0-9]*)\[(id|name|index)=("(?:[^"\\]|\\.)*"|\d+)\]/;
+const SEG = /^([A-Za-z][A-Za-z0-9]*)\[(id|name|index)=("(?:[^"\\]|\\.)*"|-?\d+)\]/;
 export function parseRef(ref) {
     const path = [];
     let rest = ref.trim();

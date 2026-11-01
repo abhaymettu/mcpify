@@ -5,7 +5,7 @@
 //   node bench/coverage.ts [App ...]      default: every app in bench/fixtures.ts
 //   writes bench/results/coverage.json and bench/results/coverage.md
 import { execFileSync } from "node:child_process";
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
 import { findApp } from "../src/find.ts";
@@ -187,6 +187,14 @@ for (const fx of fixtures) {
 
 mkdirSync("bench/results", { recursive: true });
 const stamp = new Date().toISOString();
+// A partial run replaces those apps in the existing report and keeps the rest (each app records its own run time).
+for (const r of all) (r as AppResult & { when?: string }).when = stamp;
+try {
+  const prev: AppResult[] = JSON.parse(readFileSync("bench/results/coverage.json", "utf8")).apps;
+  const fresh = new Set(all.map((r) => r.app));
+  all.unshift(...prev.filter((r) => !fresh.has(r.app)));
+  all.sort((a, b) => fixtures.concat(FIXTURES).findIndex((f) => f.app === a.app) - fixtures.concat(FIXTURES).findIndex((f) => f.app === b.app));
+} catch {}
 writeFileSync("bench/results/coverage.json", JSON.stringify({ when: stamp, macos: execFileSync("sw_vers", ["-productVersion"], { encoding: "utf8" }).trim(), apps: all }, null, 2));
 const rows = all.map((r) => {
   const read = r.results.filter((x) => x.kind === "read");
@@ -198,7 +206,7 @@ const rows = all.map((r) => {
 const totals = (k: "read" | "w", s: Status) => all.flatMap((r) => r.results).filter((x) => (k === "read" ? x.kind === "read" : x.kind !== "read") && x.status === s).length;
 writeFileSync(
   "bench/results/coverage.md",
-  `Coverage run ${stamp}. Generated with \`--writes --allow-delete\` so every tool is counted; the default server is read only.\n\n` +
+  `Coverage report, last updated ${stamp} (per-app run times in coverage.json). Generated with \`--writes --allow-delete\` so every tool is counted; the default server is read only.\n\n` +
     `| App | Classes | Tools (read / write) | Read pass | Read fail | Read not reached | Write round trip | Failures and notes |\n|---|---|---|---|---|---|---|---|\n${rows.join("\n")}\n` +
     `| **All** | ${all.reduce((a, r) => a + r.classes, 0)} | ${all.reduce((a, r) => a + r.tools.read, 0)} / ${all.reduce((a, r) => a + r.tools.write + r.tools.destructive, 0)} | ${totals("read", "pass")} | ${totals("read", "fail")} | ${totals("read", "untested")} | ${totals("w", "pass")} of ${totals("w", "pass") + totals("w", "fail")} | |\n`,
 );

@@ -295,8 +295,9 @@ export function adapterFromDictionary(appName: string, dict: Dictionary, opts: G
         const base = args.paths.parent || [];
         const coll = base.length ? resolve(base)[${JSON.stringify(plural)}] : app[${JSON.stringify(plural)}];
         const p = props(args.properties);
-        const o = app[${JSON.stringify(ctorName(name))}](p);
-        coll.push(o);
+        let o = app[${JSON.stringify(ctorName(name))}](p);
+        // Some apps (Finder, Music) refuse push-style creation; fall back to the make command.
+        try { coll.push(o); } catch (e) { o = app.make({ new: ${JSON.stringify(jxaName(name))}, at: base.length ? resolve(base) : undefined, withProperties: p }); }
         // Some apps (TextEdit) make the object but drop properties given at creation; set those again.
         for (const k of Object.keys(p)) { try { const v = o[k](); if (String(v) !== String(p[k]) && !(v instanceof Date)) o[k] = p[k]; } catch (e) {} }
         const seg = ${keyRead};

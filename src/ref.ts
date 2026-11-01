@@ -7,7 +7,7 @@
 export type Selector = "id" | "name" | "index";
 export type RefPath = [element: string, by: Selector, value: string | number][];
 
-const SEG = /^([A-Za-z][A-Za-z0-9]*)\[(id|name|index)=("(?:[^"\\]|\\.)*"|\d+)\]/;
+const SEG = /^([A-Za-z][A-Za-z0-9]*)\[(id|name|index)=("(?:[^"\\]|\\.)*"|-?\d+)\]/;
 
 export function parseRef(ref: string): RefPath {
   const path: RefPath = [];
