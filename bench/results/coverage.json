@@ -1,7 +1,46 @@
 {
-  "when": "2026-11-01T12:21:23.869Z",
+  "when": "2026-11-01T12:28:04.056Z",
   "macos": "26.5.2",
   "apps": [
+    {
+      "app": "Keynote",
+      "scriptable": false,
+      "classes": 0,
+      "tools": {
+        "read": 0,
+        "write": 0,
+        "destructive": 0
+      },
+      "results": [],
+      "note": "Command failed: claude-helper osascript -l JavaScript -e function run(argv){const app=Application(\"…\");const args=JSON.parse(argv[0]);const r=((app) => { const ",
+      "when": "2026-11-01T12:28:04.056Z"
+    },
+    {
+      "app": "Numbers",
+      "scriptable": false,
+      "classes": 0,
+      "tools": {
+        "read": 0,
+        "write": 0,
+        "destructive": 0
+      },
+      "results": [],
+      "note": "Command failed: claude-helper osascript -l JavaScript -e function run(argv){const app=Application(\"…\");const args=JSON.parse(argv[0]);const r=((app) => { const ",
+      "when": "2026-11-01T12:28:04.056Z"
+    },
+    {
+      "app": "Pages",
+      "scriptable": false,
+      "classes": 0,
+      "tools": {
+        "read": 0,
+        "write": 0,
+        "destructive": 0
+      },
+      "results": [],
+      "note": "Command failed: claude-helper osascript -l JavaScript -e function run(argv){const app=Application(\"…\");const args=JSON.parse(argv[0]);const r=((app) => { const ",
+      "when": "2026-11-01T12:28:04.056Z"
+    },
     {
       "app": "Reminders",
       "scriptable": true,
@@ -1965,42 +2004,138 @@
       "when": "2026-11-01T12:21:23.869Z"
     },
     {
-      "app": "Keynote",
-      "scriptable": false,
-      "classes": 0,
+      "app": "Photos",
+      "scriptable": true,
+      "classes": 4,
       "tools": {
-        "read": 0,
-        "write": 0,
+        "read": 9,
+        "write": 14,
         "destructive": 0
       },
-      "results": [],
-      "note": "Command failed: claude-helper osascript -l JavaScript -e function run(argv){const app=Application(\"…\");const args=JSON.parse(argv[0]);const r=((app) => { const ",
-      "when": "2026-11-01T12:18:25.329Z"
-    },
-    {
-      "app": "Numbers",
-      "scriptable": false,
-      "classes": 0,
-      "tools": {
-        "read": 0,
-        "write": 0,
-        "destructive": 0
-      },
-      "results": [],
-      "note": "Command failed: claude-helper osascript -l JavaScript -e function run(argv){const app=Application(\"…\");const args=JSON.parse(argv[0]);const r=((app) => { const ",
-      "when": "2026-11-01T12:18:25.329Z"
-    },
-    {
-      "app": "Pages",
-      "scriptable": false,
-      "classes": 0,
-      "tools": {
-        "read": 0,
-        "write": 0,
-        "destructive": 0
-      },
-      "results": [],
-      "note": "Command failed: claude-helper osascript -l JavaScript -e function run(argv){const app=Application(\"…\");const args=JSON.parse(argv[0]);const r=((app) => { const ",
+      "results": [
+        {
+          "tool": "get_application",
+          "kind": "read",
+          "status": "pass",
+          "ms": 166
+        },
+        {
+          "tool": "list_containers",
+          "kind": "read",
+          "status": "pass",
+          "ms": 4738
+        },
+        {
+          "tool": "get_container",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_container",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_albums",
+          "kind": "read",
+          "status": "pass",
+          "ms": 1378
+        },
+        {
+          "tool": "get_album",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_album",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_folders",
+          "kind": "read",
+          "status": "pass",
+          "ms": 638
+        },
+        {
+          "tool": "get_folder",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_folder",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "list_media_items",
+          "kind": "read",
+          "status": "fail",
+          "ms": 120017,
+          "error": "Photos did not answer within 120 s. It may be busy (syncing or reading its store); try again."
+        },
+        {
+          "tool": "get_media_item",
+          "kind": "read",
+          "status": "untested"
+        },
+        {
+          "tool": "update_media_item",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "export",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "add",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "start_slideshow",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "stop_slideshow",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "next_slide",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "previous_slide",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "pause_slideshow",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "resume_slideshow",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "spotlight",
+          "kind": "write",
+          "status": "untested"
+        },
+        {
+          "tool": "search",
+          "kind": "write",
+          "status": "untested"
+        }
+      ],
+      "note": "dictionary marks every element read only, so mcpify generates no create tools",
       "when": "2026-11-01T12:18:25.329Z"
     },
     {
@@ -2673,141 +2808,6 @@
         }
       ],
       "note": "read only by design here; the sweep reads no messages",
-      "when": "2026-11-01T12:18:25.329Z"
-    },
-    {
-      "app": "Photos",
-      "scriptable": true,
-      "classes": 4,
-      "tools": {
-        "read": 9,
-        "write": 14,
-        "destructive": 0
-      },
-      "results": [
-        {
-          "tool": "get_application",
-          "kind": "read",
-          "status": "pass",
-          "ms": 166
-        },
-        {
-          "tool": "list_containers",
-          "kind": "read",
-          "status": "pass",
-          "ms": 4738
-        },
-        {
-          "tool": "get_container",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "update_container",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_albums",
-          "kind": "read",
-          "status": "pass",
-          "ms": 1378
-        },
-        {
-          "tool": "get_album",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "update_album",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_folders",
-          "kind": "read",
-          "status": "pass",
-          "ms": 638
-        },
-        {
-          "tool": "get_folder",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "update_folder",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "list_media_items",
-          "kind": "read",
-          "status": "fail",
-          "ms": 120017,
-          "error": "Photos did not answer within 120 s. It may be busy (syncing or reading its store); try again."
-        },
-        {
-          "tool": "get_media_item",
-          "kind": "read",
-          "status": "untested"
-        },
-        {
-          "tool": "update_media_item",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "export",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "add",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "start_slideshow",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "stop_slideshow",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "next_slide",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "previous_slide",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "pause_slideshow",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "resume_slideshow",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "spotlight",
-          "kind": "write",
-          "status": "untested"
-        },
-        {
-          "tool": "search",
-          "kind": "write",
-          "status": "untested"
-        }
-      ],
-      "note": "dictionary marks every element read only, so mcpify generates no create tools",
       "when": "2026-11-01T12:18:25.329Z"
     }
   ]

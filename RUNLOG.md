@@ -39,3 +39,11 @@ Work log for the 2026-11-01 push from "one app" to "many apps", for anyone picki
 - Finish the coverage rerun and the agent suite; put the numbers in README and `site/`.
 - Make the demo GIF from a recorded run (`scripts/cast.ts`, then `agg`).
 - Test a fresh clone and the `npx github:` install, scan for secrets, make the repo public.
+
+## 2026-11-01, 06:35 checkpoint
+
+- Coverage report (`bench/results/coverage.md`, merged from per-app runs): all 13 apps tried. Every read tool that failed did so by timing out (Photos media items), plus one Finder ref-parse bug, now fixed. Music, Finder and TextEdit now pass their full write round trips after the make fallback and the rich-text fix. Keynote, Numbers and Pages timed out making their test document under load, in all three tries.
+- Agent suite: two workers running in the background (`bench/results/agent-*.jsonl`; transcripts in `bench/results/local/`). Worker 1 covers Reminders and Notes. Worker 2 covers Calendar, Contacts, Music, Finder, TextEdit and Mail. Keynote tasks will be skipped if seeding fails.
+- With the load average near 100, a single mcpify call to Reminders can take over 120 s. The osascript arm usually needs one process per task, while the mcpify arm needs 2 to 6 tool calls. Two mcpify runs hit the 480 s cap.
+- Demo: `scripts/record-demo.sh` records into a throwaway `mcpify-demo` list. The first take timed out because the suite was using Reminders at the same time. The agent did the right thing: it did not retry a write that had timed out, and it said so. Re-record once the suite has moved off Reminders.
+- Still to do: summarize the agent results, fill `{{RESULTS}}` and `{{LIMITS}}` in README and `site/writeup.md`, write `site/meta.json`, test a fresh clone and npx, run gitleaks, go public.

@@ -1,0 +1,3 @@
+{"task":"cal-create","app":"Calendar","arm":"mcpify","rep":1,"ok":true,"collateral":false,"toolCalls":6,"toolErrors":3,"ms":481327,"error":"exit 143: "}
+{"task":"cal-create","app":"Calendar","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":7030,"costUsd":0.008815400000000001}
+{"task":"cal-start-time","app":"Calendar","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":4438,"costUsd":0.0074249}
