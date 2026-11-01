@@ -1,4 +1,4 @@
-// Records a real MCP session against the real Notes app into demo/transcript.md.
+// Records a real MCP session against the real Notes app into demo/notes-v0/transcript.md.
 // Only touches the "mcpify-test" folder; list_folders output is filtered to that folder
 // so the transcript never shows the owner's other folders.
 import { writeFileSync } from "node:fs";
@@ -38,5 +38,5 @@ out.push(`## Independent check (raw osascript, not mcpify)`, "", "```json", chec
 osa(`const a=Application("Notes");a.delete(a.notes.byId(${JSON.stringify(made.id)}));"ok"`);
 out.push(`The demo note was then deleted (it goes to Notes' Recently Deleted).`, "");
 // Note ids embed the Notes store UUID, a per-device identifier; mask it.
-writeFileSync("demo/transcript.md", out.join("\n").replace(/x-coredata:\/\/[0-9A-F-]{36}\//g, "x-coredata://<store>/"));
-console.log("wrote demo/transcript.md");
+writeFileSync("demo/notes-v0/transcript.md", out.join("\n").replace(/x-coredata:\/\/[0-9A-F-]{36}\//g, "x-coredata://<store>/"));
+console.log("wrote demo/notes-v0/transcript.md");
