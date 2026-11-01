@@ -83,8 +83,15 @@ function runClaude(args: string[], env: NodeJS.ProcessEnv, cwd: string): Promise
   });
 }
 
-async function runOne(task: Task, arm: string, rep: number): Promise<Run> {
-  const vars = task.setup() ?? {};
+async function runOne(task: Task, arm: string, rep: number): Promise<Run | undefined> {
+  let vars: Record<string, string>;
+  try {
+    vars = task.setup() ?? {};
+  } catch (e) {
+    // The app did not let us seed the test data (busy, or a modal dialog); the run is skipped, not failed.
+    appendFileSync(log, JSON.stringify({ task: task.id, app: task.app, arm, rep, setup_failed: true, error: String((e as Error).message).slice(0, 120) }) + "\n");
+    return undefined;
+  }
   const prompt = task.prompt.replace(/\{(\w+)\}/g, (_m, k) => vars[k] ?? `{${k}}`);
   const before = FINGERPRINT[task.app]?.();
   const cwd = mkdtempSync(join(tmpdir(), "mcpify-run-"));
@@ -139,6 +146,10 @@ for (let rep = 1; rep <= REPS; rep++) {
     const order = (TASKS.indexOf(task) + rep) % 2 ? ARMS : [...ARMS].reverse();
     for (const arm of order) {
       const r = await runOne(task, arm, rep);
+      if (!r) {
+        console.error(`SKIP ${arm.padEnd(9)} ${task.id.padEnd(20)} setup failed`);
+        continue;
+      }
       const { answer, ...shareable } = r;
       appendFileSync(log, JSON.stringify(shareable) + "\n");
       appendFileSync(join(LOCAL, "answers.jsonl"), JSON.stringify({ task: r.task, arm, rep, answer }) + "\n");

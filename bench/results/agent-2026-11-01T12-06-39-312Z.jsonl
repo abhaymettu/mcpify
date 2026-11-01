@@ -1,3 +1,5 @@
 {"task":"rem-count-open","app":"Reminders","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":3,"toolCalls":2,"toolErrors":0,"ms":24835,"costUsd":0.0312138}
 {"task":"rem-count-open","app":"Reminders","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":5031,"costUsd":0.005148}
 {"task":"rem-add-due","app":"Reminders","arm":"osascript","rep":1,"ok":true,"collateral":false,"turns":2,"toolCalls":1,"toolErrors":0,"ms":82048,"costUsd":0.009323600000000001}
+{"task":"rem-add-due","app":"Reminders","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":4,"toolCalls":3,"toolErrors":0,"ms":110911,"costUsd":0.043282100000000004}
+{"task":"rem-complete","app":"Reminders","arm":"mcpify","rep":1,"ok":true,"collateral":false,"turns":5,"toolCalls":4,"toolErrors":0,"ms":31302,"costUsd":0.046887599999999995}

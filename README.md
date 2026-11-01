@@ -1,112 +1,114 @@
 # mcpify
 
-Turn a closed Mac app into an MCP server that an AI agent can use.
+Any scriptable Mac app, as an MCP server your agent can use. mcpify builds the server from the app's own scripting dictionary, then checks every tool against the real app.
 
-v0 does this for one app, Apple Notes, in two ways:
+![Claude Code moving a reminder's due date through a generated Reminders server, with the confirm step](demo/demo.gif)
 
-1. **`mcpify serve notes`**: a hand-written server with six tools (list folders, list notes, search, read, create, update). Tested end to end against the real Notes app.
-2. **`mcpify generate <App.app>`**: a read-only server built only from the app's scripting dictionary, with no app-specific code. For Notes it produces eight tools (list and get for accounts, folders, notes and attachments). Tested against the real Notes app. **Not yet tried on any other app** (see Limits).
+<sub>Replay of a recorded run on test data (`demo/demo.jsonl`). Waits are shortened, nothing else is changed.</sub>
 
-Plus **`mcpify inspect <App.app>`**, which prints what an app exposes to scripting, or says it has no dictionary.
+```sh
+claude mcp add reminders -- npx -y github:abhaymettu/mcpify Reminders
+```
 
-The goal is "any closed Mac app becomes an MCP server". v0 shows the path for apps that ship a scripting dictionary, and proves it on one of them. It does not claim more than that.
+## Why
+
+Most Mac apps an agent might drive (Reminders, Calendar, Music, Finder, Keynote, Mail and hundreds of third-party apps) have no API. Many of them do ship an AppleScript dictionary: a machine-readable list of the objects and commands they expose. Agents today either get one "run any AppleScript" tool, or a hand-written server for a handful of apps.
+
+mcpify reads the dictionary and generates typed tools for every class in it, so `Reminders` becomes `list_reminders`, `get_reminder`, `create_reminder`, and so on. It is read-only unless you opt in to writes, and writes need confirmation.
+
+## Results
+
+{{RESULTS}}
 
 ## Quick start
 
-Needs macOS and Node 23.6 or newer (TypeScript runs directly, no build step).
+Needs macOS and Node 23.6 or newer.
 
 ```sh
-git clone https://github.com/abhaymettu/mcpify && cd mcpify
-npm install
-node src/cli.ts inspect /System/Applications/Notes.app   # what Notes exposes
-npm test                                                  # drives the real Notes app
+npx -y github:abhaymettu/mcpify tools Reminders      # list the tools it would generate
+npx -y github:abhaymettu/mcpify inspect Calendar     # what the app exposes, * = writable
+claude mcp add reminders -- npx -y github:abhaymettu/mcpify Reminders
 ```
 
-The first call asks macOS for permission to control Notes (System Settings > Privacy & Security > Automation). Grant it to the terminal or agent that runs mcpify.
+Then ask Claude Code something like "what's left on my Groceries list?". The first call makes macOS ask whether your terminal may control Reminders. Calendar, Contacts and Photos also ask for access to their data.
 
-Use it from Claude Code with an MCP config file (this is the form used for the agent demo, Claude Code 2.1.303):
-
-```json
-{ "mcpServers": { "notes": { "command": "node", "args": ["/path/to/mcpify/src/cli.ts", "serve", "notes"] } } }
-```
+Writes, inside one list only, with a confirm step:
 
 ```sh
-claude -p "Find my note about rain jackets" --mcp-config notes.json --allowedTools "mcp__notes__search_notes,mcp__notes__read_note"
+claude mcp add reminders -- npx -y github:abhaymettu/mcpify Reminders --writes --scope 'lists[name="Groceries"]'
 ```
 
-The server speaks MCP over stdio. It was tested with the official MCP TypeScript client (1.32) and Claude Code. Other clients should work the same way but were not tried.
+`mcpify apps` lists every scriptable app on your Mac. Any of them works the same way: `mcpify Music`, `mcpify Finder`, `mcpify "/Applications/Some App.app"`.
 
-## Tools (`serve notes`)
+## What gets generated
 
-| Tool | Writes | What it does |
+For each class an agent can reach from the application object (by default up to four levels deep, so `calendars > events > attendees`):
+
+| Tool | Flag | What it does |
 |---|---|---|
-| `list_folders` | no | Every folder in every account, with id and note count |
-| `list_notes` | no | Notes newest first, optionally in one folder |
-| `search_notes` | no | Title or text contains the query (matched inside Notes, case insensitive), with a snippet |
-| `read_note` | no | Title, folder, dates, plain text and HTML. Locked notes return metadata only |
-| `create_note` | yes | New note from a title and plain text, in the default folder or a given one |
-| `update_note` | yes | Append text, or replace the body (optionally the title). Refuses locked notes and notes with attachments |
+| `list_<plural>` | default | Items inside a parent, with `where` filters (text by "contains", others by equality or `{gt, lt}`), `fields` and paging. Each item has a `ref`. |
+| `get_<class>` | default | Every readable property of one object, plus counts of what it contains. |
+| `get_application` | default | The app's own properties, such as Music's current track or player state. |
+| `create_<class>`, `update_<class>` | `--writes` | Typed from the writable properties in the dictionary. |
+| app commands | `--writes` | The app's own verbs (Music `play`, Safari `add reading list item`...). |
+| `delete_<class>`, destructive commands | `--allow-delete` | Delete, empty, send, erase and similar. |
 
-There is no delete tool, on purpose.
+Objects are addressed by **refs**, paths from the application such as `calendars[name="Work"]/events[id="1F2E..."]`. Every list result carries one, so the agent can pass it back. A ref is parsed in Node, checked against the dictionary, and walked inside `osascript` as data. Agent text never becomes script text.
+
+## Writes, safely
+
+- **Read-only by default.** Without `--writes`, no tool that changes anything is even registered.
+- **Confirmation.** If the client supports MCP elicitation, a write asks the user, showing what will change. Otherwise the first call returns a plan (for an update, the current and new values) and a one-time code. The same call with that code carries it out. A code is bound to its exact arguments, expires after 10 minutes and works once. `--confirm none` turns this off.
+- **Dry run.** `--dry-run` makes every write return its plan and change nothing.
+- **Scope.** `--scope 'lists[name="Groceries"]'` refuses any write whose target is outside that ref. Refs by name and by id are compared after resolving both to ids.
+- **Deletes are separate.** `delete_` tools and commands like `empty trash` or `send` exist only with `--allow-delete`.
+
+`test/safety.e2e.test.ts` checks each of these against the real Reminders app.
 
 ## How it works
 
-Each tool is a small JavaScript for Automation (JXA) function that runs inside `osascript` and talks to the app over Apple Events. Arguments go in as one JSON string, never pasted into the script, so text from the agent cannot become code. Text the agent writes is HTML-escaped before it reaches Notes, so it stays text.
+```
+App.app ──sdef──▶ dictionary model ──▶ tool set ──▶ MCP server (stdio)
+                  (includes, class       list_ get_ create_ ...      │
+                   extensions,           each a JXA function         ▼
+                   inheritance)                                   osascript ──Apple Events──▶ app
+```
 
-`generate` reads the dictionary with `sdef`, finds the classes the application object contains, and makes a `list_<plural>` and a `get_<class>` tool for each, reading every property with a simple type (text, number, boolean, date).
+1. `sdef` prints the app's dictionary. mcpify resolves `xi:include`s (most apps pull in Apple's Standard Suite this way), merges class extensions and flattens inheritance.
+2. It walks the element graph from `application` to find the classes an agent can reach, and which property is each class's identifier (the one with code `ID  `; Calendar calls it `uid`).
+3. Each tool is a small JavaScript for Automation function. Arguments travel as JSON on `osascript`'s argv. List tools read each property for the whole collection in one Apple Event, rather than one event per object.
 
-## Tests
+## How it differs from existing work
 
-`npm test` runs three files:
+Two projects already generate MCP code from a dictionary. [sdef-to-mcp](https://ai.rud.is/posts/2026-04-24-sdef-to-md-and-mcp-skill/) produces stubs that need review, and [MCP-server-AppleScript-wrapper](https://github.com/aredigg/MCP-server-AppleScript-wrapper) makes one tool per command. Generic servers like [macos-automator-mcp](https://github.com/steipete/macos-automator-mcp) give the agent one "run this script" tool. Hand-written servers like [apple-mcp](https://github.com/supermemoryai/apple-mcp) and [iMCP](https://github.com/mattt/iMCP) are better than mcpify for the apps they cover.
 
-- `test/notes.e2e.test.ts`: starts `mcpify serve notes`, connects the official MCP client over stdio, and calls every tool against the real Notes app. Each result is checked with a separate raw `osascript` read that does not use mcpify code. No mocks.
-- `test/generated.e2e.test.ts`: the same for `mcpify generate /System/Applications/Notes.app`.
-- `test/inspect.test.ts`: the dictionary reader on Notes (scriptable) and Calculator (not scriptable).
+mcpify's differences:
 
-The tests work inside one folder named `mcpify-test` in the default account. They create it if needed, and delete the notes they make (deleted notes go to Notes' Recently Deleted). A run cut off by a Notes timeout can leave a test note in that folder; the next run removes it first (the serve suite clears the folder, and the generate suite removes its own `mcpifygen` notes and empty notes, which Notes names "New Note" with no other text; a test plants both kinds and checks they are gone). They never read or change other notes, except that search runs across all notes for a random token that only the test note contains.
+1. Tools are typed per class and work as generated, for any scriptable app.
+2. Every generated tool the sweep can reach is called against the live app, and write round trips are checked with independent `osascript` reads.
+3. Writes are gated.
+4. There is a measured comparison against the raw-osascript approach.
 
-Results are in [Test evidence](#test-evidence).
+More detail in [docs/prior-art.md](docs/prior-art.md).
 
 ## Limits
 
-- **Notes can stall.** Notes answers Apple Events on its main thread, which also redraws the sidebar from its database. On a machine with heavy disk load, single calls took 8 to 81 seconds, and some hit Apple's 2 minute Apple Event timeout. On a quiet machine the same calls took about 0.15 to 2.5 seconds. Once, Notes stayed slow until it was quit and relaunched. mcpify waits up to 120 s (`MCPIFY_TIMEOUT_MS` to change it), then returns a clear error.
-- **A write that times out may still happen.** The request stays queued inside Notes. The error says so; read the note before retrying.
-- **Creating or deleting folders makes Notes stall for minutes** on the machine I tested. mcpify has no folder tools, and the tests reuse one folder for that reason.
-- **Formatting.** Input is plain text. `replace` drops the old formatting. `append` keeps it. Notes rewrites the HTML it stores (for example `&lt` without the semicolon).
-- **Locked notes and notes with attachments** are never edited. Both refusal paths are in the code but **not covered by tests** yet (no locked note or attachment in the test setup).
-- **`generate` is read only and tested on Notes only.** Other apps need a separate macOS permission prompt, which I did not trigger overnight. Dictionary quirks in other apps (odd plural names, classes without ids, slow properties) are untested.
-- **Apps with no scripting dictionary** (Calculator, many third-party apps) are not covered. They would need the Accessibility API, which v0 does not use.
-- **Scale.** Tested on one library of about 350 notes in three accounts. Writes were tested only in the default iCloud account.
-- **Agent demo is read only.** On the machine where this was built, a safety hook blocks MCP tools that write to an unknown service when a child agent calls them, so the recorded agent session only searches and reads. Writes are shown in the scripted transcript and the tests.
-- **Prior art.** Several Apple Notes MCP servers already exist on GitHub, some with more tools than this one. Notes is the test case here, not the point. What mcpify adds is the generator and the habit of testing against the real app.
+{{LIMITS}}
 
-## Demo
+## Reproduce
 
-- [`demo/transcript.md`](demo/transcript.md): a scripted MCP session (create, search, append, read, an error), checked against Notes with raw `osascript`.
-- [`demo/agent-transcript.md`](demo/agent-transcript.md): Claude Code finding and reading a note through mcpify. Rerun with `scripts/agent-demo.sh`.
+```sh
+git clone https://github.com/abhaymettu/mcpify && cd mcpify && npm install
+npm run test:unit                       # dictionary model and generator, no Apple Events
+npm test                                # live tests: Notes, Reminders (test lists only)
+npm run coverage                        # live sweep over the apps in bench/fixtures.ts
+npm run bench                           # agent suite, both arms (uses your Claude Code login)
+node bench/summarize.ts bench/results/agent-*.jsonl
+```
 
-Note ids in the transcripts have the Notes store UUID replaced with `<store>`.
+If your terminal lacks Automation permission for an app, set `MCPIFY_OSASCRIPT` to a wrapper that has it, for example `MCPIFY_OSASCRIPT="my-helper osascript"`. The agent suite exposes the same wrapper to the osascript arm.
 
-## Test evidence
-
-Final runs, 2026-10-21 01:20 to 01:23 local time, macOS 26.5.2, Node 26.10.0, MCP SDK 1.32.1, a Notes library of about 350 notes in three accounts:
-
-| Run | Tests | Passed | Wall time | Per-call medians |
-|---|---|---|---|---|
-| 1 | 15 | 15 | 8.7 s | 0.15 to 0.34 s |
-| 2 | 15 | 15 | 5.4 s | 0.15 to 0.34 s |
-| 3 | 15 | 15 | 29.5 s | 0.41 to 2.5 s |
-
-Raw logs are not committed; rerun with `npm test` (it prints a `TIMINGS` line).
-
-Earlier the same night, with another heavy job loading the disk, two runs failed: 9 of 12 tests passed in one, and in the other every end-to-end test failed in setup, because Notes did not answer within 60 s, and later not within Apple's own 120 s. After about an hour of test traffic under that load, Notes stayed slow (3 to 25 s for a trivial call) until it was quit and relaunched. The three passing runs above came after that relaunch.
-
-Bugs the real-app tests found and that are fixed:
-
-- `list_folders` asked each folder for its count separately and took over 60 s. One bulk request takes about 0.3 s.
-- A timed-out call returned the whole JXA script as its error text. It now returns a short message, and for writes it warns that the change may still be applied.
-
-Agent demo: Claude Code 2.1.303 (Sonnet) found and read the seeded note in two tool calls, 4 turns, 16.1 s end to end.
+`mcpify serve notes` is still there: it runs the hand-written six-tool Notes server from v0, kept for comparison (see [demo/notes-v0](demo/notes-v0)).
 
 ## License
 
